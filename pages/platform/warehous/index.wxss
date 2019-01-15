@@ -1,0 +1,5 @@
+/* pages/library/warehous/index.wxss */
+.clickAuto{
+  text-align: right;
+  width: 95%;
+}

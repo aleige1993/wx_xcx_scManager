@@ -1,0 +1,46 @@
+<!--pages/msgeModel/index.wxml-->
+<view>
+ <van-radio-group value="{{ radio }}" bind:change="onChange">
+    <view class='msge_box'>
+      <view class='msge_title'>
+        <van-radio name="1">模板一</van-radio>
+      </view>
+      <view class='msge_conter'>
+          <view>您的<text>快递公司</text>快递已到盘溪121号代收点，请凭编码包裹编码来取件，电话13570250098</view>
+      </view>
+      <view class='msge_footer'>
+          <view>删除</view>
+          <view>修改</view>
+      </view>
+    </view>
+
+  <view class='msge_box'>
+      <view class='msge_title'>
+        <van-radio name="2">模板一</van-radio>
+      </view>
+      <view class='msge_conter'>
+          <view>您的<text>快递公司</text>快递已到盘溪121号代收点，请凭编码包裹编码来取件，电话13570250098</view>
+      </view>
+      <view class='msge_footer'>
+          <view>删除</view>
+          <view>修改</view>
+      </view>
+    </view>
+  <view class='msge_box'>
+      <view class='msge_title'>
+        <van-radio name="3">模板一</van-radio>
+      </view>
+      <view class='msge_conter'>
+          <view>您的<text>快递公司</text>快递已到盘溪121号代收点，请凭编码包裹编码来取件，电话13570250098</view>
+      </view>
+      <view class='msge_footer'>
+          <view>删除</view>
+          <view>修改</view>
+      </view>
+    </view>    
+</van-radio-group>
+ <view class='marig-primary'>
+    <van-button size="normal" type="primary" custom-class="primary">创建短信模板</van-button>
+  </view>
+
+</view>

@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+    <view class='library'>
+        <navigator>
+            <icon class='iconfont icon-rukudengji'></icon>
+            <text>入库</text>
+        </navigator>
+        <navigator>
+            <icon class='iconfont icon-chuku'></icon>
+            <text>出库</text>
+        </navigator>
+    </view>
+    <view class='code_input'>
+        <icon class='iconfont icon-xiazai5'></icon>
+        <input placeholder='手机号后四位/快递单号/包裹代码' type='text'></input>
+    </view>
+</view>

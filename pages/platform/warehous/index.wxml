@@ -1,0 +1,24 @@
+<!--pages/library/warehous/index.wxml-->
+
+<view>
+    <image bindtap='getCode' src='../../../static/images/error.png'></image>
+   
+    <van-cell-group>
+      <van-field
+          value="{{ code }}"
+          clearable
+          placeholder="请输入快递单号"
+        />
+        <van-field
+          value="{{ username }}"
+          clearable
+          placeholder="请输入手机号"
+        />
+      </van-cell-group>
+    <view class='marig-primary'>
+      <van-button size="normal" type="primary" custom-class="primary">入库</van-button>
+    </view>
+    <view class='clickAuto'>
+        <navigator class='c-blue'>去选择短信模板</navigator>
+    </view>
+</view>

@@ -1,0 +1,39 @@
+/* pages/msgeModel/index.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.msge_box{
+width: 95%;
+background-color: #fff;
+margin: 0 auto;
+margin-top: 20rpx;
+border-radius:10rpx;
+box-shadow: 5rpx 10rpx 10rpx #ddd;
+}
+.msge_box .msge_title{
+  border-bottom: 1px solid #eee;
+  padding:20rpx;
+}
+.msge_conter{
+  padding: 20rpx;
+  color: #666;
+  line-height:30px;
+}
+.msge_conter view text{
+  color: #3984ff;
+}
+.msge_footer{
+  display: flex;
+  border-top:1px solid #eee;
+  justify-content:space-between;
+}
+.msge_footer view{
+  width: 50%;
+  text-align: center;
+  padding:20rpx 0;
+  color: #3984ff;
+}
+.msge_footer view:first-child{
+  border-right:1px solid #eee; 
+  color: #999;
+}

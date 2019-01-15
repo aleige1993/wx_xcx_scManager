@@ -1,0 +1,50 @@
+/* pages/msgeModel/foundModel.wxss */
+.found{
+  padding: 20rpx;
+}
+.input_panl{
+
+}
+.input_panl input{
+  border:1px solid #eee;
+  height:35px;
+  padding-left: 20rpx;
+}
+.input_panl textarea{
+  border:1px solid #eee;
+  height:80px; 
+  width: 100%;
+  margin-top:30rpx;
+  padding:20rpx;
+}
+.pushSate{
+  margin-top: 20rpx;
+}
+.pushSate .text{
+  color: #999;
+ 
+}
+
+.pushSate .Data{
+  display: flex;
+  margin-top: 20rpx;
+}
+.pushSate .Data view{
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width:25%;
+  height:160rpx;
+}
+.pushSate .Data view.action{
+  border: 1px solid #3984ff;
+}
+.about_panl{
+  width: 90%;
+  margin: 0  auto;
+  color: #999;
+
+}

@@ -1,0 +1,32 @@
+<!--pages/msgeModel/foundModel.wxml-->
+<view>
+  <view class='found'>
+      <view class='input_panl'>
+        <input placeholder='请输入模板名称'/> 
+        <textarea placeholder="请输入短信内容" auto-focus="{{true}}" cursor="{{cursorindex}}" selection-start="{{start}}"  selection-end="{{end}}" bindblur="getFocus"/>
+      </view>
+      <view class='pushSate'>
+        <text class='text'>点击图标插入相应参数</text>
+        <view class='Data'>
+          <view wx:for="{{modelData}}" bindtap='clickTap' wx:key="{{index}}" data-type="{{item.type}}" data-index="{{index}}" class="{{item.isAction?'action':''}}">
+              <icon class='iconfont icon-Order'></icon>
+              <text>{{item.text}}</text>
+          </view>
+           <!-- <view bindtap='clickTap' data-type="2">
+              <icon class='iconfont icon-Order'></icon>
+              <text>取件编码</text>
+          </view> -->
+        </view>
+      </view>
+
+  </view>
+
+   <view class='marig-primary'>
+      <van-button size="normal" type="primary" custom-class="primary">保存</van-button>
+    </view>
+  <view class='about_panl'>
+    <view>注意：</view>
+    <view>1、短信字数=短信内容+插入字符</view>
+    <view>2、快递单号字数预设为14个字，因各家品牌的单号位数不同，所以实际占用的字数以发送时具体情况为准。</view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/login/resetPwd",
+    "pages/index/index",
+    "pages/driveCar/driveDetails",
+    "pages/driveCar/index",
+    "pages/laundryOrder/searOrder",
+    "pages/laundryOrder/index",
+    "pages/msgeModel/foundModel",
+    "pages/usCenter/addUser/addUser",
+    "pages/platform/outhous/queryForm",
+    "pages/platform/outhous/index",
+    "pages/usCenter/index",
+    "pages/msgeModel/index",
+    "pages/platform/outhous/outResult",
+    "pages/platform/warehous/wareResult",
+    "pages/platform/warehous/getInfo",
+    "pages/platform/warehous/index",
+    "pages/platform/index",
+    "pages/login/index",
+    "pages/usCenter/setUser/index",
+    "pages/usCenter/addUser/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "颂车小站管家",
+    "navigationBarTextStyle": "black"
+  }
+}

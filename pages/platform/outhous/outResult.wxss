@@ -1,0 +1,46 @@
+/* pages/platform/warehous/wareResult.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.suc_panl{
+  background-color: #fff;
+  padding:30rpx;
+  text-align: center;
+}
+.suc_panl view{
+  margin-top:20rpx;
+}
+.suc_panl icon{
+  font-size: 100px;
+  color: #3984ff;
+}
+.suc_panl .suc_title{
+  font-size:20px;
+  font-weight: 700;
+}
+.suc_panl .suc_code{
+  color: #ff0000;
+}
+.suc_panl .suc_lable{
+  color: #999;
+}
+
+.error_panl{
+  text-align: center;
+  padding:30rpx;
+}
+.error_panl icon{
+  font-size: 100px;
+  color: rgb(225, 102, 0);
+}
+.error_panl .error_title{
+   font-size:20px;
+  font-weight: 700;
+  color: #666;
+}
+.error_panl  .error_lable{
+  color: #999;
+}
+.error_panl view{
+  margin-top: 20rpx;
+}

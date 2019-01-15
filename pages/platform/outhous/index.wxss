@@ -1,0 +1,14 @@
+/* pages/platform/outhous/index.wxss */
+@import '../../../pages/platform/warehous/index.wxss';
+.p_panl{
+text-align: center;
+}
+.p_panl view{
+  color: #777;
+  font-size: 15px;
+  margin: 30rpx 0;
+}
+
+.p_panl navigator{
+  color: #3984ff;
+}

@@ -1,0 +1,62 @@
+/* pages/platform/outhous/queryForm.wxss */
+.query_box{
+  border-top:1px solid #eee;
+  padding:30rpx 20rpx; 
+}
+.suc_box{
+  background-color: #fff;
+  border:1px solid #eee;
+  border-radius:10rpx;
+  box-shadow:5rpx 10rpx 10rpx #3984ff;
+  margin-bottom: 20rpx;
+}
+.suc_title{
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding:20rpx;
+  position:relative;
+}
+
+.suc_title .title_deta text{
+  margin-left:20rpx;
+}
+.suc_title .state{
+  position:absolute;
+  right: 20rpx;
+}
+.title_deta icon{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius:100%;
+  background-color: #3984ff; 
+}
+.suc_conter{
+  padding:0 20rpx 20rpx 20rpx;
+  position: relative;
+}
+.suc_conter view{
+  margin-top: 20rpx;
+}
+.suc_conter .scu_but{
+  position: absolute;
+  bottom:20rpx;
+  right: 20rpx;
+  padding:0 20rpx;
+  color: #fff;
+  background-color:#3984ff;
+  font-size:22rpx;
+}
+
+.error{
+  text-align: center;
+}
+.error .err_title{
+  font-weight:700;
+  font-size:36rpx;
+  margin-top: 100rpx;
+}
+
+.error .err_lable{
+  color: #999;
+  margin-top:40rpx;
+}

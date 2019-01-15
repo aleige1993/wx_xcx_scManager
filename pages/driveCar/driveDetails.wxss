@@ -1,0 +1,6 @@
+/* pages/driveCar/driveDetails.wxss */
+.infotext{
+  font-weight: 700;
+  font-size:15px;
+  padding:20rpx 30rpx;
+}

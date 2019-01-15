@@ -1,0 +1,40 @@
+<!--pages/platform/outhous/queryForm.wxml-->
+<view>
+   <view>
+      <van-search
+        value="{{ value }}"
+        placeholder="手机号后四位/快递单号/入库单号"
+        use-action-slot
+        bind:search="onSearch"
+        field-class="inputClass"
+      >
+        <view slot="action" bind:tap="onSearch">搜索</view>
+      </van-search>
+   </view>
+   <view class='query_box'>
+      <view class='success' wx:if="{{isShow}}">
+          <view class='suc_box'>
+              <view class='suc_title'>
+                <view class='title_deta'>
+                 <icon></icon>
+                 <text>顺风快递</text>
+                 <text>2315654654564566454</text>
+                </view>
+                <view class='state'>待出库</view>
+              </view>
+              <view class='suc_conter'>
+                <view>取件码：887908</view>
+                <view>收件人手机：18725659875</view>
+                <view>出库小站：保利香雪小区3号门店</view>
+                <view>入库时间：2017-07-24 17:25:38</view>
+                <button class='scu_but'>授权出库</button>
+              </view>
+          </view>
+      </view>
+      <view class='error' wx:else>
+        <view class='err_title'>未查询到相关订单</view>  
+         <view class='err_lable'>“请输入手机号后四位、快递单号再查询”</view>  
+      </view>
+   </view>
+
+</view>
