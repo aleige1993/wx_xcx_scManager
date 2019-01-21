@@ -1,8 +1,18 @@
 //app.js
+import Toast from '/ui-plugins/vant/toast/toast';
+import Dialog from '/ui-plugins/vant/dialog/dialog';
+
 App({
   onLaunch: function () {
+    let app = this;
+    this.Toast = Toast;
+    this.Dialog = Dialog;
+
+    this.Formdata = require('/utils/Formdata.js');
+    this.UserLogin = require('/utils/UserLogin.js');
+
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
+    let logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
@@ -34,6 +44,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: {}
   }
 })

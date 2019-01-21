@@ -23,25 +23,25 @@ let post = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': ''
+      'token': app.UserLogin.get().token || ''
     },
     success(res) {
-      if (res.statusCode !== 200) {
-        app.Tools.showToast('系统繁忙, 请稍后再试');
-        return false;
-      }
+      // if (res.statusCode !== 200) {
+      //   app.Tools.showToast('系统繁忙, 请稍后再试');
+      //   return false;
+      // }
       let data = res.data;
       if (typeof data === 'string') {
         data = JSON.parse(data);
       }
       if (data.success && data.success === 'false') {
-        app.Tools.showToast(data.message);
+        app.Toast(data.message);
         return false;
       }
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('系统繁忙, 请稍后再试');
+      app.Toast('系统繁忙, 请稍后再试');
     }
   });
 }
