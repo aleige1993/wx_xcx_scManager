@@ -1,23 +1,23 @@
 {
   "pages": [
-    "pages/login/resetPwd",
-    "pages/index/index",
-    "pages/driveCar/driveDetails",
-    "pages/driveCar/index",
-    "pages/laundryOrder/searOrder",
-    "pages/laundryOrder/index",
-    "pages/msgeModel/foundModel",
-    "pages/usCenter/addUser/addUser",
-    "pages/platform/outhous/queryForm",
-    "pages/platform/outhous/index",
-    "pages/usCenter/index",
-    "pages/msgeModel/index",
-    "pages/platform/outhous/outResult",
-    "pages/platform/warehous/wareResult",
-    "pages/platform/warehous/getInfo",
+    "pages/login/index",
     "pages/platform/warehous/index",
     "pages/platform/index",
-    "pages/login/index",
+    "pages/index/index",
+    "pages/login/resetPwd",
+    "pages/platform/warehous/getInfo",
+    "pages/platform/warehous/wareResult",
+    "pages/platform/outhous/outResult",
+    "pages/platform/outhous/index",
+    "pages/platform/outhous/queryForm",
+    "pages/msgeModel/index",
+    "pages/msgeModel/foundModel",
+    "pages/driveCar/index",
+    "pages/driveCar/driveDetails",
+    "pages/laundryOrder/index",
+    "pages/laundryOrder/searOrder",
+    "pages/usCenter/index",
+    "pages/usCenter/addUser/addUser",
     "pages/usCenter/setUser/index",
     "pages/usCenter/addUser/index"
   ],
@@ -26,5 +26,24 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "颂车小站管家",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "/static/images/tab_home_b.png",
+        "iconPath": "/static/images/tab_home_a.png"
+      },
+      {
+        "pagePath": "pages/usCenter/index",
+        "text": "我的",
+        "selectedIconPath": "/static/images/tab_user_b.png",
+        "iconPath": "/static/images/tab_user_a.png"
+      }
+    ],
+    "color": "#BFBFBF",
+    "selectedColor": "#3984ff",
+    "borderStyle": "#e5e5e5"
   }
 }

@@ -3,3 +3,23 @@
   text-align: right;
   width: 95%;
 }
+.waiter{
+    display: flex;
+    background-color: #fff;
+    padding: 10rpx 30rpx;
+    padding-right: 0;
+
+    justify-content: space-between;
+   align-content: center;
+   border-bottom: 1px solid #eee;
+}
+.waiter view{
+    display: flex;
+   align-items: center;
+   align-content: center;
+   color: #666;
+}
+.waiter view icon{
+    margin-bottom: 10rpx;
+    margin-right: 10rpx;
+}

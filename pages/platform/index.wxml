@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class='library'>
-      <navigator>
+      <navigator  url="/pages/platform/warehous/index">
          <icon  class='iconfont icon-rukudengji'></icon>
          <text>入库</text>
       </navigator>

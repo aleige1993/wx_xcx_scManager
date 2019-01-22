@@ -5,21 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:true
+    isShow:true,
+      options:[],
+      item:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      console.log(options.data);
+      wx.showLoading({
+          title: '加载中',
+      })
+      this.setData({
+          options: options.data
+      })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      if (options.code=='0000'){
+          this.setData({
+              'item': options.data
+          })
+      } else if (options.code == '0001'){
+          this.setData({
+              'isShow':false
+          })
+      }
+      wx.hideLoading()
   },
 
   /**

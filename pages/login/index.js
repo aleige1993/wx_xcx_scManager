@@ -1,11 +1,36 @@
 // pages/login/index.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+  },
 
+  submitForm(e) {
+    let mobile = e.detail.value.mobile;
+    let password = e.detail.value.password;
+    if (mobile === '') {
+      app.Toast('请输入手机号码');
+      return false;
+    }
+    if (password === '') {
+      app.Toast('请输入密码');
+      return false;
+    }
+    app.Formdata.post('/openapi/members/express/login', {
+      mobile,
+      password
+    }, function(res) {
+      if (res.success && res.success === 'true') {
+        app.UserLogin.set(res.data);
+        wx.redirectTo({
+            url: '/pages/platform/warehous/index',
+        })
+      }
+    });
   },
 
   /**

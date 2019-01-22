@@ -8,8 +8,8 @@
         <view class='suc_lable'>已发送短信模板</view>
       </view>
       <view class='marig-primary'>
-        <van-button size="normal" type="primary" custom-class="primary">继续入库</van-button>
-      </view>
+        <button class="button" size="normal"  >继续入库</button>
+    </view>
   </view>
   <view class='error' wx:else>
       <view class='error_panl'>

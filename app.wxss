@@ -120,7 +120,11 @@ overflow: hidden;
   margin-top: 58rpx;
 }
 .marig-primary{
-  margin:30rpx 0;
+  margin:30rpx 40rpx;
+}
+.marig-primary .button{
+  background: #3984FF;
+  color: #fff;
 }
 .primary{
   width: 90%;

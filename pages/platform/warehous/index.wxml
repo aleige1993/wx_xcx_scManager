@@ -3,22 +3,41 @@
 <view>
     <image bindtap='getCode' src='../../../static/images/error.png'></image>
    
+   <form bindsubmit="formSubmit" >
     <van-cell-group>
       <van-field
           value="{{ code }}"
           clearable
           placeholder="请输入快递单号"
+           name="code"
         />
         <van-field
-          value="{{ username }}"
+          value="{{ userPhone }}"
           clearable
           placeholder="请输入手机号"
+        name="userPhone"
         />
       </van-cell-group>
+      <view class='waiter'>
+        <view class='c-333 font-w6'>选择快递</view>
+        <view>
+            <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}">
+                <view class="picker">
+                    {{shopArr[shopIndex] ? shopArr[shopIndex] : '请选择快递'}}
+                    <icon class='iconfont icon-you1'></icon>
+                </view>
+            </picker>
+        </view>
+  </view>
+
     <view class='marig-primary'>
-      <van-button size="normal" type="primary" custom-class="primary">入库</van-button>
+      <!-- <van-button form-type="submit"  size="normal" type="primary" custom-class="primary" >入库</van-button> -->
+        <button class="button" form-type='submit' size="normal" >入库</button>
     </view>
+   
+   </form>
+    
     <view class='clickAuto'>
-        <navigator class='c-blue'>去选择短信模板</navigator>
+        <navigator class='c-blue'  url="/pages/msgeModel/index">去选择短信模板</navigator>
     </view>
 </view>

@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "van-button": "/ui-plugins/vant/button/index"
+    "van-button": "/ui-plugins/vant/button/index",
+    "van-toast": "/ui-plugins/vant/toast/index",
+    "van-dialog": "/ui-plugins/vant/dialog/index"
   }
 }
