@@ -1,46 +1,50 @@
 <!--pages/platform/warehous/getInfo.wxml-->
 <view>
+<form bindsubmit="formSubmit">
     <van-cell-group>
       <van-field
-        value="{{ username }}"
+        value="{{ company.expressNo}}"
         label="快递单号"
         placeholder="请输入快递单号"
         input-align="right"
+        name="expressNo"
       />
       <van-field
-        value="{{ phone }}"
+        value="{{ company.mobile }}"
         label="手机号"
         input-align="right"
         placeholder="请输入手机号"
+        name="mobile"
       />
       <van-cell
         title="入库单号"
         title-width="140rpx"
-        value="1000001"
+        value="{{company.orderNo}}"
       />
       <van-cell
         title="快递公司"
         title-width="140rpx"
-        value="顺丰速运"
+        value="{{company.company}}"
       />
       <van-cell
         title="入库操作"
         title-width="140rpx"
-        value="王睿"
+        value="{{userInfo.userName}}"
       />
       <van-cell
         title="入库地址"
         title-width="140rpx"
-        value="重庆市渝中区万科锦城1号门店"
+        value="{{company.stationAddr}}"
       />
        <van-cell
         title="入库时间"
         title-width="140rpx"
-        value="2017-07-24 17:25:38"
+        value="{{company.gmtCreate}}"
       />
     </van-cell-group>
 
-     <view class='marig-primary'>
-        <van-button size="normal" type="primary" custom-class="primary">提交</van-button>
-      </view>
+    <view class='marig-primary'>
+        <button class="button" form-type='submit' size="normal" >提交</button>
+    </view>
+    </form>
 </view>

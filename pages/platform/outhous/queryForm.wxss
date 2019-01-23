@@ -60,3 +60,13 @@
   color: #999;
   margin-top:40rpx;
 }
+
+.suc_conter .err_but{
+  position: absolute;
+  bottom:20rpx;
+  right: 20rpx;
+  padding:0 20rpx;
+  color: #fff;
+  background-color:#ccc;
+  font-size:22rpx;
+}

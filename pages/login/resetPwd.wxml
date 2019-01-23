@@ -14,19 +14,23 @@
           <view class='step'>
             <van-cell-group>
             <van-field
-                value="{{ username }}"
+                value="{{ mobile }}"
                 clearable
                 placeholder="请输入手机号"
+                name="mobile"
+                bind:change="getMobile"
               />
               <van-field
-                value="{{ sms }}"
+                value="{{ code }}"
                 center
                 clearable
                 placeholder="请输入短信验证码"
                 border="{{ false }}"
                 use-button-slot
+                name="code"
               >
-                <van-button slot="button" size="small" type="primary">发送验证码</van-button>
+                <van-button wx:if="{{ isShow }}" slot="button" size="small" type="primary" bind:click="onCaptcha">发送验证码</van-button>
+                <van-button wx:else slot="button"  disabled  size="small" type="primary">{{tiemNum}}秒后重发</van-button>
               </van-field>
             </van-cell-group>  
           </view>

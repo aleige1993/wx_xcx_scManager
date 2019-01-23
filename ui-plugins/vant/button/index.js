@@ -18,7 +18,11 @@ VantComponent({
     size: {
       type: String,
       value: 'normal'
-    }
+    },
+      submit:{
+          type: String,
+          value: 'submit'
+      }
   },
   methods: {
     onClick: function onClick() {

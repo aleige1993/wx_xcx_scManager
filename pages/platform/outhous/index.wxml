@@ -3,7 +3,7 @@
     <image bindtap='getCode' src='../../../static/images/error.png'></image>
     <view class='p_panl'>
       <view>将快递单号、包裹编码放入框内，即可扫描出库</view>
-      <navigator>手动输入出库</navigator>
+      <navigator url="/pages/platform/outhous/queryForm">手动输入出库</navigator>
     </view>
     <!-- <van-cell-group>
       <van-field

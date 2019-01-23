@@ -1,6 +1,6 @@
 // pages/platform/outhous/index.js
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,8 +12,10 @@ Page({
     wx.scanCode({
       scanType: ['barCode', 'qrCode'],
       success(res) {
-        _this.setData({
-          code: res.result
+          app.Formdata.post('/openapi/express/wechatapplet/express/order/output', { expressNo:res.result },(res)=>{
+              wx.navigateTo({
+                  url: '/pages/platform/outhous/outResult?data=' + JSON.stringify(res)
+              })
         })
       }
     })

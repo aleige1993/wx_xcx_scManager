@@ -1,4 +1,5 @@
 // pages/login/resetPwd.js
+let  app = getApp();
 Page({
 
   /**
@@ -13,13 +14,42 @@ Page({
         text: '2.设置新密码'
       }
     ],
-    active:0
+    active:0,
+    isShow: true,
+    tiemNum: 60,
+    mobile:'',
+    code: '',
+    oldPaswd: '',
+    newPaswd: ''
   },
   next(){
     this.setData({
       active:1
     })
   },
+  //获取电话
+    getMobile(e) {
+        this.setData({
+            mobile: e.detail
+        })
+    },
+    onCaptcha(e) {
+        if (this.data.mobile == "") {
+            app.Tools.showToast('请输入手机号码');
+            return false;
+        }
+        let parms = {
+            'mobile': this.data.mobile,
+            'busiType': "2",
+            "userType": "0"
+        }
+        app.Formdata.post('/openapi/members/express/sms/smsCaptcha', parms, (res) => {
+            if (res.code == '0000') {
+                console.log(res)
+                app.Date.VerifCode(this, 'isShow', this.data.tiemNum)
+            }
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */

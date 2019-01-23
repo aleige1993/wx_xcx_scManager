@@ -4,18 +4,18 @@
       <view class='suc_panl'>
         <icon class='iconfont icon-chenggong'></icon>
         <view class='suc_title'>入库成功</view>
-        <view class='suc_code'>取件验证码:123465</view>
+        <view class='suc_code'>取件验证码:{{item.qrcode}}</view>
         <view class='suc_lable'>已发送短信模板</view>
       </view>
       <view class='marig-primary'>
-        <van-button size="normal" type="primary" custom-class="primary">继续入库</van-button>
-      </view>
+        <button class="button" size="normal" bindtap='goback'>继续入库</button>
+    </view>
   </view>
   <view class='error' wx:else>
       <view class='error_panl'>
         <icon class='iconfont icon-shibai'></icon>
         <view class='error_title'>入库失败请重新扫码</view>
-        <view class='error_lable'>多次扫码失败可手动输入</view>
+        <view class='error_lable'  bindtap='goback'>多次扫码失败可手动输入</view>
       </view>
   </view>
 

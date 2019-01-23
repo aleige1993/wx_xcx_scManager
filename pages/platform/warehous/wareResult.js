@@ -5,21 +5,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:true
+    isShow:true,
+      options:[],
+      item:''
   },
-
+    goback(e){
+        wx.redirectTo({
+            url:'/pages/platform/warehous/index'
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let optionArr = JSON.parse(options.data)
+      wx.showLoading({
+          title: '加载中',
+      })
+      if (optionArr.code == '0000') {
+          this.setData({
+              'item': optionArr.data
+          })
+      } else if (optionArr.code == '0001') {
+          this.setData({
+              'isShow': false
+          })
+      }
+      wx.hideLoading()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+     
   },
 
   /**
