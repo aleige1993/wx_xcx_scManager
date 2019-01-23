@@ -1,4 +1,6 @@
 // pages/login/index.js
+
+var md5 = require('../../utils/md5.js') 
 const app = getApp();
 
 Page({
@@ -10,9 +12,9 @@ Page({
   },
 
   submitForm(e) {
-    let mobile = e.detail.value.mobile;
+      let account = e.detail.value.account;
     let password = e.detail.value.password;
-    if (mobile === '') {
+      if (account === '') {
       app.Toast('请输入手机号码');
       return false;
     }
@@ -20,14 +22,16 @@ Page({
       app.Toast('请输入密码');
       return false;
     }
-    app.Formdata.post('/openapi/members/express/login', {
-      mobile,
-      password
+
+      app.Formdata.post('/openapi/common/user/login', {
+        "account": account,
+        'password': md5.hexMD5(password),
+        "code": "4"
     }, function(res) {
       if (res.success && res.success === 'true') {
-        app.UserLogin.set(res.data);
+        app.UserLogin.set('userInfo',res.data);
         wx.redirectTo({
-            url: '/pages/platform/warehous/index',
+            url: '/pages/platform/outhous/index',
         })
       }
     });

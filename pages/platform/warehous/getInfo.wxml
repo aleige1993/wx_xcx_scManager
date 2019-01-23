@@ -34,7 +34,7 @@
       <van-cell
         title="入库地址"
         title-width="140rpx"
-        value="重庆市渝中区万科锦城1号门店"
+        value="{{company.stationAddr}}"
       />
        <van-cell
         title="入库时间"

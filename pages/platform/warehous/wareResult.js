@@ -9,34 +9,36 @@ Page({
       options:[],
       item:''
   },
-
+    goback(e){
+        wx.redirectTo({
+            url:'/pages/platform/warehous/index'
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options.data);
+      let optionArr = JSON.parse(options.data)
       wx.showLoading({
           title: '加载中',
       })
-      this.setData({
-          options: options.data
-      })
+      if (optionArr.code == '0000') {
+          this.setData({
+              'item': optionArr.data
+          })
+      } else if (optionArr.code == '0001') {
+          this.setData({
+              'isShow': false
+          })
+      }
+      wx.hideLoading()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      if (options.code=='0000'){
-          this.setData({
-              'item': options.data
-          })
-      } else if (options.code == '0001'){
-          this.setData({
-              'isShow':false
-          })
-      }
-      wx.hideLoading()
+     
   },
 
   /**

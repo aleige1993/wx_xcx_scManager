@@ -6,22 +6,21 @@ if (!app) {
   })
 }
 
-let userInfo = "userInfo";
-const set = (data) => {
+const set = (keys,data) => {
   wx.setStorage({
-    key: userInfo,
+    key: keys,
     data: data,
   })
   // app.globalData.userInfo = data;
 }
 
-const get = () => {
-  return wx.getStorageSync(userInfo);
+const get = (keys) => {
+  return wx.getStorageSync(keys);
   // return app.globalData.userInfo;
 }
 
-const remove = () => {
-  
+const remove = (keys) => {
+  return  wx.removeStorageSync(keys)
 }
 
 module.exports = {

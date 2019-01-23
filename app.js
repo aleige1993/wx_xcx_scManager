@@ -10,7 +10,8 @@ App({
 
     this.Formdata = require('/utils/Formdata.js');
     this.UserLogin = require('/utils/UserLogin.js');
-      this.Tools = require('/utils/Tools.js');
+    this.Tools = require('/utils/Tools.js');
+    this.Date = require('/utils/Date.js');
 
     // 展示本地存储能力
     let logs = wx.getStorageSync('logs') || []

@@ -1,13 +1,62 @@
 // pages/platform/outhous/queryForm.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShow:true
+    isShow:false,
+      page:1,
+      limit:1000,
+      mobile:'',
+      listItem:[],
+      indexItem:[]
   },
-
+    onChange(e){
+        this.setData({
+            mobile: e.detail
+        })
+    },
+    onSearch(event){
+        if (this.data.mobile==""){
+            app.Tools.showToast('搜索不能为空');
+            return false;
+        }
+        let params = {
+            'page': this.data.page,
+            'limit': this.data.limit,
+            'mobile': this.data.mobile
+        }
+        app.Formdata.get('/openapi/express/wechatapplet/express/order/query', params,(res)=>{
+          console.log(res)
+            if (res.code == "0000" && res.data.length > 0  ){
+                this.setData({
+                    'isShow': true,
+                    'listItem': res.data
+                })
+            }else{
+                this.setData({
+                    'isShow':false
+                })
+            }
+      })
+    },
+    //出库
+    output(e){
+       let detail = e.target.dataset
+        console.log(detail)
+        app.Formdata.post('/openapi/express/wechatapplet/express/order/output', { expressNo: detail.expressno }, (res) => {
+            if(res.code=='0000'){
+                wx.showToast({
+                    title: '出库成功',
+                    icon: 'success',
+                    duration: 2000
+                })
+                this.onSearch();
+            }
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */

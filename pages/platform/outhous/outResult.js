@@ -7,12 +7,34 @@ Page({
   data: {
     isShow: true
   },
-
+    goback(e){
+        wx.redirectTo({
+            url: '/pages/platform/outhous/index'
+        })
+    },
+    tourl(e){
+        wx.redirectTo({
+            url: '/pages/platform/outhous/queryForm'
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let optionArr = JSON.parse(options.data)
+      wx.showLoading({
+          title: '加载中',
+      })
+      if (optionArr.code == '0000') {
+          this.setData({
+              'isShow': true
+          })
+      } else if (optionArr.code == '0001') {
+          this.setData({
+              'isShow': false
+          })
+      }
+      wx.hideLoading()
   },
 
   /**
