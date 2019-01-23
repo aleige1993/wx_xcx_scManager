@@ -189,23 +189,23 @@ const isNull=(obj)=>{
     return obj === null || obj == undefined;
 }
 //验证码
-const  VerifCode = (that, verifCode, tiemNum) => { 
-  that.setData({
-    verifCode: false
-  });
-  var interval = setInterval(function () {
-    tiemNum--;
+const VerifCode = (that, verifCode, tiemNum) => {
     that.setData({
-      tiemNum: tiemNum
-    })
-    if (tiemNum < 1) {
-      clearInterval(interval);
-      that.setData({
-        verifCode: true,
-        tiemNum: 60
-      })
-    }
-  }, 1000)
+        [verifCode]: false
+    });
+    var interval = setInterval(function () {
+        tiemNum--;
+        that.setData({
+            tiemNum: tiemNum
+        })
+        if (tiemNum < 1) {
+            clearInterval(interval);
+            that.setData({
+                [verifCode]: true,
+                tiemNum: tiemNum
+            })
+        }
+    }, 1000)
 }  
 
 module.exports = {
