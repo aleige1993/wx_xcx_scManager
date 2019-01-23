@@ -1,3 +1,4 @@
+
 let FormdataConfig = require('../config/index.js'); 
 let HTTPOPENAPIURL = FormdataConfig.HTTPOPENAPIURL;
 let HTTPHEADER_APPID = FormdataConfig.HTTPHEADER_APPID;
@@ -26,22 +27,68 @@ let post = (url, data, callback) => {
       'token': app.UserLogin.get().token || ''
     },
     success(res) {
-      // if (res.statusCode !== 200) {
-      //   app.Tools.showToast('系统繁忙, 请稍后再试');
-      //   return false;
-      // }
       let data = res.data;
       if (typeof data === 'string') {
         data = JSON.parse(data);
       }
+      if (data.code === '0004') {
+        app.Tools.showToast('登录失效，请重新登录');
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '/pages/login/index',
+          })
+        }, 2000);
+        return false;
+      }
       if (data.success && data.success === 'false') {
-        app.Toast(data.message);
+        app.Tools.showToast(data.message);
         return false;
       }
       callback(data);
     },
     fail(e) {
-      app.Toast('系统繁忙, 请稍后再试');
+      app.Tools.showToast('系统繁忙, 请稍后再试');
+    }
+  });
+}
+
+let get = (url, data, callback) => {
+  wx.request({
+    method: 'GET',
+    url: HTTPOPENAPIURL + url,
+    data: {
+      'message': JSON.stringify(data)
+    },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'appId': HTTPHEADER_APPID,
+      'version': HTTPHEADER_APPVERSION,
+      'sign': HTTPHEADER_APPSIGN,
+      'token': app.UserLogin.get().token || ''
+    },
+    success(res) {
+      let data = res.data;
+      if (typeof data === 'string') {
+        data = JSON.parse(data);
+      }
+      if (data.code === '0004') {
+        app.Tools.showToast('登录失效，请重新登录');
+        setTimeout(function() {
+          wx.navigateTo({
+            url: '/pages/login/index',
+          })
+        }, 2000);
+        return false;
+      }
+      if (data.success && data.success === 'false') {
+        app.Tools.showToast(data.message);
+        return false;
+      }
+      callback(data);
+    },
+    fail(e) {
+      console.log('fail');
+      app.Tools.showToast('系统繁忙, 请稍后再试');
     }
   });
 }
@@ -98,5 +145,6 @@ let uploadFile = (files, callback) => {
 
 module.exports = {
   post: post,
+  get: get,
   uploadFile: uploadFile
 } 

@@ -8,7 +8,7 @@
         <text>18033441984</text>
       </view>
     </view>
-    <icon  class='iconfont icon-you1'></icon>
+    <!-- <icon  class='iconfont icon-you1'></icon> -->
   </view>
 
   <view>
@@ -17,33 +17,39 @@
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
         <text>今日收件</text>
       </view>
-      <view>
-        <icon class='iconfont icon-you1'></icon>
-      </view>
+      <view>1000</view>
     </view>
-     <view class='glup_box'>
+    <view class='glup_box'>
       <view>
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
-        <text>今日收件</text>
+        <text>出库剩余</text>
       </view>
-      <view>
-        <icon class='iconfont icon-you1'></icon>
-      </view>
+      <view>500</view>
     </view>
-     <view class='glup_box'>
+
+    <navigator class='glup_box' url="/pages/usCenter/addUser/index">
       <view>
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
-        <text>今日收件</text>
+        <text>员工管理</text>
       </view>
       <view>
         <icon class='iconfont icon-you1'></icon>
       </view>
-    </view>
+    </navigator>
+    <navigator class='glup_box' url="/pages/usCenter/setUser/index">
+      <view>
+        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <text>驿站设置</text>
+      </view>
+      <view>
+        <icon class='iconfont icon-you1'></icon>
+      </view>
+    </navigator>
 
   </view>
 
-   <view class='marig-primary'>
-     <van-button size="normal" type="primary" custom-class="primary">退出账号</van-button>
+  <view class='marig-primary'>
+    <van-button size="normal" type="primary" custom-class="primary">退出账号</van-button>
   </view>
 
 </view>

@@ -1,22 +1,37 @@
 // pages/msgeModel/index.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    radio:''
+    templateList: [],
   },
-  onChange(e){
-    this.setData({
-      radio: e.detail
+
+  setDefault(e) {
+    let tempNo = e.currentTarget.dataset.tempno;
+    app.Formdata.post('/openapi/express/wechatapplet/messagetemp/sms/default', {
+      tempNo: tempNo
+    }, function(res) {
+      if (res.success && res.success === 'true') {
+        app.Tools.showToast('设置成功');
+      }
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    app.Formdata.get('/openapi/express/wechatapplet/messagetemp/sms/query', { page:1, limit:999999999}, function(res) {
+      // console.log(res);
+      _this.setData({
+        templateList: res.data
+      }); 
+    });
   },
 
   /**

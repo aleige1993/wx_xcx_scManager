@@ -1,20 +1,20 @@
 {
   "pages": [
-    "pages/login/index",
-    "pages/index/index",
     "pages/login/resetPwd",
-    "pages/platform/index",
+    "pages/login/index",
+    "pages/laundryOrder/index",
+    "pages/platform/outhous/queryForm",
     "pages/platform/warehous/index",
+    "pages/platform/index",
+    "pages/index/index",
     "pages/platform/warehous/getInfo",
     "pages/platform/warehous/wareResult",
     "pages/platform/outhous/outResult",
     "pages/platform/outhous/index",
-    "pages/platform/outhous/queryForm",
     "pages/msgeModel/index",
     "pages/msgeModel/foundModel",
     "pages/driveCar/index",
     "pages/driveCar/driveDetails",
-    "pages/laundryOrder/index",
     "pages/laundryOrder/searOrder",
     "pages/usCenter/index",
     "pages/usCenter/addUser/addUser",
@@ -30,17 +30,29 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页",
+        "pagePath": "pages/laundryOrder/index",
+        "text": "洗衣",
         "selectedIconPath": "/static/images/tab_home_b.png",
         "iconPath": "/static/images/tab_home_a.png"
       },
       {
-        "pagePath": "pages/usCenter/index",
-        "text": "我的",
+        "pagePath": "pages/driveCar/index",
+        "text": "学车",
         "selectedIconPath": "/static/images/tab_user_b.png",
         "iconPath": "/static/images/tab_user_a.png"
-      }
+      },
+      {
+        "pagePath": "pages/platform/index",
+        "text": "派件",
+        "selectedIconPath": "/static/images/tab_user_b.png",
+        "iconPath": "/static/images/tab_user_a.png"
+    },
+    {
+        "pagePath": "pages/usCenter/index",
+        "text": "账户",
+        "selectedIconPath": "/static/images/tab_user_b.png",
+        "iconPath": "/static/images/tab_user_a.png"
+    }
     ],
     "color": "#BFBFBF",
     "selectedColor": "#3984ff",
