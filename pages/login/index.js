@@ -30,9 +30,10 @@ Page({
     }, function(res) {
       if (res.success && res.success === 'true') {
         app.UserLogin.set('userInfo',res.data);
-        wx.redirectTo({
-            url: '/pages/platform/outhous/index',
-        })
+        // wx.redirectTo({
+        //     url: '/pages/platform/outhous/index',
+        // })
+        wx.navigateBack();
       }
     });
   },

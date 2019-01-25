@@ -116,10 +116,10 @@ let uploadFile = (files, callback) => {
             success: function (res) {
                 // console.log(res);
                 wx.hideLoading();
-                if (res.statusCode !== 200) {
-                    app.Tools.showToast('系统繁忙, 请稍后再试');
-                    return false;
-                }
+                // if (res.statusCode !== 200) {
+                //     app.Tools.showToast('系统繁忙, 请稍后再试');
+                //     return false;
+                // }
                 let data = res.data;
                 if (typeof data === 'string') {
                     data = JSON.parse(data);

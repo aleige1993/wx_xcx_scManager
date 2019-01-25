@@ -4,8 +4,8 @@
     <view class='box-user'>
       <image src='../../static/images/error.png'></image>
       <view>
-        <text>Windir</text>
-        <text>18033441984</text>
+        <text>{{userinfo.userName}}</text>
+        <text>{{userinfo.mobile}}</text>
       </view>
     </view>
     <!-- <icon  class='iconfont icon-you1'></icon> -->
@@ -17,17 +17,17 @@
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
         <text>今日收件</text>
       </view>
-      <view>1000</view>
+      <view>{{userinfo.inPutTodayNum}}</view>
     </view>
     <view class='glup_box'>
       <view>
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
         <text>出库剩余</text>
       </view>
-      <view>500</view>
+      <view>{{userinfo.outRemainNum}}</view>
     </view>
 
-    <navigator class='glup_box' url="/pages/usCenter/addUser/index">
+    <navigator wx:if="{{showAddUser}}" class='glup_box' url="/pages/usCenter/addUser/index">
       <view>
         <icon class='iconfont icon-ico_meiyoushuju'></icon>
         <text>员工管理</text>
@@ -49,7 +49,7 @@
   </view>
 
   <view class='marig-primary'>
-    <van-button size="normal" type="primary" custom-class="primary">退出账号</van-button>
+    <van-button bind:click="loginout" size="normal" type="primary" custom-class="primary">退出账号</van-button>
   </view>
 
 </view>

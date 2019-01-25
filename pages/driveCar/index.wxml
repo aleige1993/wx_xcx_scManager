@@ -1,28 +1,10 @@
 <!--pages/driveCar/index.wxml-->
 <view class='driveCar'>
-  <view class='drivetype'>
+  <view data-item="{{item}}" bindtap='viewDetail' wx:for="{{carList}}" wx:key="{{index}}" class='drivetype'>
     <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
-    </view>
-    <icon class='iconfont icon-you1'></icon>
-  </view>
-
-  <view class='drivetype'>
-    <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
-    </view>
-    <icon class='iconfont icon-you1'></icon>
-  </view>
-
-  <view class='drivetype'>
-    <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
+      <view class='type_title'>车型学习:{{item.typeText}}</view>
+      <view class='type_name'>学员姓名:{{item.userName}}</view>
+      <view class='type_phone'>手机号码:{{item.mobile}}</view>
     </view>
     <icon class='iconfont icon-you1'></icon>
   </view>
