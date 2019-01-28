@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/laundryOrder/index",
-    "pages/platform/index",
-    "pages/index/index",
     "pages/driveCar/index",
     "pages/driveCar/driveDetails",
+    "pages/platform/index",
+    "pages/index/index",
     "pages/usCenter/index",
     "pages/usCenter/setUser/index",
     "pages/login/resetPwd",

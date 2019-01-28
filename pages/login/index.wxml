@@ -21,7 +21,7 @@
     </form>
     
     <view class='findpwd'>
-        <navigator class='c-blue'>找回密码</navigator>
+        <navigator url="/pages/login/resetPwd" class='c-blue'>找回密码</navigator>
     </view>
 </view>
 

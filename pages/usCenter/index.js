@@ -21,40 +21,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    
-    
+    let _this = this;
+    app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
+      if (res.success && res.success === 'true') {
+        _this.setData({
+          userinfo: res.data
+        })
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (!app.UserLogin.get('userInfo')) {
-      wx.navigateTo({
-        url: '/pages/login/index',
-      })
-    } else {
-      let _this = this;
-      console.log(app.UserLogin.get('userInfo').userLevel === '1');
-      _this.setData({
-        showAddUser: app.UserLogin.get('userInfo').userLevel === '1'
-      })
-      app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
-        if (res.success && res.success === 'true') {
-          _this.setData({
-            userinfo: res.data
-          })
-        }
-      });
-    }
+    
   },
 
   /**

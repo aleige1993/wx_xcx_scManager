@@ -1,6 +1,6 @@
 // pages/login/index.js
 
-var md5 = require('../../utils/md5.js') 
+var md5 = require('../../utils/md5.js')
 const app = getApp();
 
 Page({
@@ -12,9 +12,9 @@ Page({
   },
 
   submitForm(e) {
-      let account = e.detail.value.account;
+    let account = e.detail.value.account;
     let password = e.detail.value.password;
-      if (account === '') {
+    if (account === '') {
       app.Toast('请输入手机号码');
       return false;
     }
@@ -23,17 +23,17 @@ Page({
       return false;
     }
 
-      app.Formdata.post('/openapi/common/user/login', {
-        "account": account,
-        'password': md5.hexMD5(password),
-        "code": "4"
-    }, function(res) {
+    app.Formdata.post('/openapi/common/user/login', {
+      "account": account,
+      'password': md5.hexMD5(password),
+      "code": "4"
+    }, function (res) {
       if (res.success && res.success === 'true') {
-        app.UserLogin.set('userInfo',res.data);
-        // wx.redirectTo({
-        //     url: '/pages/platform/outhous/index',
-        // })
-        wx.navigateBack();
+        app.UserLogin.set('userInfo', res.data);
+        wx.switchTab({
+          url: '/pages/laundryOrder/index',
+        });
+        // wx.navigateBack();
       }
     });
   },

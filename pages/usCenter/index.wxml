@@ -49,7 +49,7 @@
   </view>
 
   <view class='marig-primary'>
-    <van-button bind:click="loginout" size="normal" type="primary" custom-class="primary">退出账号</van-button>
+    <button bindtap='loginout' class='button' size="normal" type="primary" custom-class="primary">退出账号</button>
   </view>
 
 </view>

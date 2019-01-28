@@ -51,6 +51,29 @@ Page({
     ]
   },
 
+  confirmStudy(e) {
+    let _this = this;
+    let index = e.currentTarget.dataset.index;
+    let mobile = e.currentTarget.dataset.mobile;
+    app.Formdata.post('/openapi/express/wechatapplet/express/drive/confirm', {
+      mobile: mobile
+    }, function(res) {
+      if (res.success && res.success === 'true') {
+        app.Tools.showToast('通知成功');
+        let carList = _this.data.carList;
+        carList = carList.map((item, itemIndex) => {
+          if (itemIndex === index) {
+            item.status = '2'; 
+          }
+          return item;
+        });
+        _this.setData({
+          carList: carList
+        })
+      }
+    }) 
+  },
+
   viewDetail(e) {
     wx.navigateTo({
       url: '/pages/driveCar/driveDetails?item=' + JSON.stringify(e.currentTarget.dataset.item)

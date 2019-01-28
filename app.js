@@ -8,11 +8,11 @@ App({
     this.Date = require('/utils/Date.js');
 
     // 判断是否登录
-    if (!this.UserLogin.get('userInfo')) {
-      wx.navigateTo({
-        url: '/pages/login/index',
-      })
-    }
+    // if (!this.UserLogin.get('userInfo')) {
+    //   wx.redirectTo({
+    //     url: '/pages/login/index',
+    //   })
+    // }
     
   },
   globalData: {

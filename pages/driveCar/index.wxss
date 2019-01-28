@@ -1,6 +1,7 @@
 /* pages/driveCar/index.wxss */
-.drivetype{
+.drivetype {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
   padding: 30rpx;
@@ -8,10 +9,7 @@
 .drivetype:last-child{
   border-bottom: 0;
 }
-.drivetype icon{
-  display: flex;
-  align-items: center;
-}
+
 .user_box {
   flex: 1;
 }
@@ -25,4 +23,8 @@
 .user_box view.type_title{
   font-weight:700;
   font-size: 15px;
+}
+
+.button {
+  margin-right: 10rpx;
 }
