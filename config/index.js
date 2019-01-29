@@ -1,7 +1,7 @@
 'use strict';
 let DEV_CONFIG = {
   // HTTPOPENAPIURL: 'https://nei.netease.com/api/apimock/de762be4badf57f5081e88a2bda2526e'
-  HTTPOPENAPIURL: 'http://192.168.202.145:10016' 
+  HTTPOPENAPIURL: 'http://192.168.202.145:10016'
   // HTTPOPENAPIURL: 'http://192.168.200.247:10001' // 请求OPENAPI的接口
 };
 let SIT_CONFIG = {
