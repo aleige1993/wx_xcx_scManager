@@ -22,6 +22,9 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    _this.setData({
+      showAddUser: app.UserLogin.get('userInfo').userLevel === '1'
+    })
     app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
       if (res.success && res.success === 'true') {
         _this.setData({
