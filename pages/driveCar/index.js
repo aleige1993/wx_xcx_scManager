@@ -1,4 +1,5 @@
 // pages/driveCar/index.js
+let app = getApp();
 Page({
 
   /**
