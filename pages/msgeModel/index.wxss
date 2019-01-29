@@ -28,12 +28,15 @@ box-shadow: 5rpx 10rpx 10rpx #ddd;
   justify-content:space-between;
 }
 .msge_footer view{
-  width: 50%;
+  width: 100%;
   text-align: center;
   padding:20rpx 0;
   color: #3984ff;
 }
-.msge_footer view:first-child{
+.msge_footer .default {
+  color: gray;
+}
+/* .msge_footer view:first-child{
   border-right:1px solid #eee; 
   color: #999;
-}
+} */

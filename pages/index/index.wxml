@@ -1,5 +1,6 @@
 <!--index.wxml-->
-<view class="container">
+这是首页
+<!-- <view class="container">
     <view class='library'>
         <navigator>
             <icon class='iconfont icon-rukudengji'></icon>
@@ -14,4 +15,4 @@
         <icon class='iconfont icon-xiazai5'></icon>
         <input placeholder='手机号后四位/快递单号/包裹代码' type='text'></input>
     </view>
-</view>
+</view> -->

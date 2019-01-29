@@ -1,7 +1,7 @@
 /**index.wxss**/
-page{
+/* page{
   background-color: #f2f2f2;
-}
+} */
 .library{
   background-color: #3984ff;
   padding:100rpx 5%;

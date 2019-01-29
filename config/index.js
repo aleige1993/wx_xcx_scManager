@@ -1,6 +1,7 @@
 'use strict';
 let DEV_CONFIG = {
-    HTTPOPENAPIURL: 'http://192.168.202.145:10016' 
+  // HTTPOPENAPIURL: 'https://nei.netease.com/api/apimock/de762be4badf57f5081e88a2bda2526e'
+  HTTPOPENAPIURL: 'http://192.168.202.145:10016'
   // HTTPOPENAPIURL: 'http://192.168.200.247:10001' // 请求OPENAPI的接口
 };
 let SIT_CONFIG = {
@@ -13,6 +14,7 @@ let PROD_CONFIG = {
 let CONFIG = DEV_CONFIG; // 选取当前环境配置
 
 module.exports = {
+  PAGE_SIZE: 10,
   HTTPHEADER_APPID: '100006',
   HTTPHEADER_APPVERSION: '',
   HTTPHEADER_APPSIGN: 'SONGCHE',

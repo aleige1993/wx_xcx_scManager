@@ -25,8 +25,19 @@ let getObjectFirstArg = (object) => {
   return argName.substring(1, argName.length - 1);
 }
 
+let getEnumValueToText = (arr, value) => {
+  let text = '';
+  arr.map(item => {
+    if (item.value === value) {
+      text = item.text;
+    }
+  })
+  return text;
+}
+
 module.exports = {
   showToast: showToast,
   timestampToTime: timestampToTime,
-  getObjectFirstArg: getObjectFirstArg
+  getObjectFirstArg: getObjectFirstArg,
+  getEnumValueToText: getEnumValueToText
 }

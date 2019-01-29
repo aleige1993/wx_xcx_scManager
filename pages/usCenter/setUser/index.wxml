@@ -4,15 +4,15 @@
   <view class='cell_box'>
       <view class='cell_list'>
         <view>头像</view>
-        <view><image src='../../../static/images/error.png'></image></view>
+        <view><image src='{{userinfo.avatarUri}}'></image></view>
       </view>
        <view class='cell_list'>
         <view>姓名</view>
-        <view>王超</view>
+        <view>{{userinfo.manageName}}</view>
       </view>
        <view class='cell_list'>
         <view>联系电话</view>
-        <view>13329387849</view>
+        <view>{{userinfo.mobile}}</view>
       </view> 
   </view>
 
@@ -23,22 +23,23 @@
       </view>
        <view class='cell_list'>
         <view>所在地区</view>
-        <view>重庆重庆市江北北区</view>
+        <view>{{userinfo.provinceName}}{{userinfo.cityName}}{{userinfo.areaName}}</view>
       </view>
       <view class='cell_list'>
         <view>详细地址</view>
-        <view>重庆市江北区119号</view>
+        <view>{{userinfo.address}}</view>
       </view>
   </view>
 
   <view class='cell_box'>
     <view class='cell_list'>
         <view>营业状态</view>
-        <view>正在营业</view>
+        <view wx:if="{{userinfo.status === '1'}}">正在营业</view>
+        <view wx:else>未营业</view>
       </view>
       <view class='cell_list'>
         <view>营业时间</view>
-        <view>8:30-18:30</view>
+        <view>{{userinfo.opentimeHsm}}-{{userinfo.closeTimeHsm}}</view>
       </view>
   </view>   
 </view>

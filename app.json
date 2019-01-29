@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/driveCar/index",
-    "pages/login/index",
     "pages/login/resetPwd",
+    "pages/login/index",
     "pages/laundryOrder/index",
     "pages/platform/outhous/queryForm",
     "pages/platform/warehous/index",
@@ -14,6 +13,7 @@
     "pages/platform/outhous/index",
     "pages/msgeModel/index",
     "pages/msgeModel/foundModel",
+    "pages/driveCar/index",
     "pages/driveCar/driveDetails",
     "pages/laundryOrder/searOrder",
     "pages/usCenter/index",

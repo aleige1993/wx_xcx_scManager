@@ -1,32 +1,48 @@
 // pages/usCenter/index.js
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userinfo: {},
+    showAddUser: false
+  },
 
+  loginout() {
+    app.UserLogin.remove('userInfo');
+    wx.navigateTo({
+      url: '/pages/login/index',
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _this = this;
+    app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
+      if (res.success && res.success === 'true') {
+        _this.setData({
+          userinfo: res.data
+        })
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

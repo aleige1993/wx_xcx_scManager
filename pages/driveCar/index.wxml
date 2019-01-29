@@ -1,29 +1,13 @@
 <!--pages/driveCar/index.wxml-->
-<view class='driveCar'>
-  <view class='drivetype'>
-    <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
-    </view>
-    <icon class='iconfont icon-you1'></icon>
-  </view>
 
-  <view class='drivetype'>
+<view  wx:for="{{carList}}" wx:key="{{index}}" class='drivetype'>
     <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
+      <view class='type_title'>车型学习:{{item.typeText}}</view>
+      <view class='type_name'>学员姓名:{{item.userName}}</view>
+      <view class='type_phone'>手机号码:{{item.mobile}}</view>
     </view>
-    <icon class='iconfont icon-you1'></icon>
-  </view>
-
-  <view class='drivetype'>
-    <view class='user_box'>
-      <view class='type_title'>车型学习:C1</view>
-      <view class='type_name'>学员姓名:王老五</view>
-       <view class='type_phone'>手机号:13500353622</view>
+    <view >
+      <van-button data-index="{{index}}" data-mobile="{{item.mobile}}" bindtap='confirmStudy' class='button' wx:if="{{item.status === '1'}}" size="small" type="danger">短信通知</van-button>
+      <van-button data-item="{{item}}"  bindtap='viewDetail' size="small" type="primary">查看详情</van-button>
     </view>
-    <icon class='iconfont icon-you1'></icon>
   </view>
-</view>

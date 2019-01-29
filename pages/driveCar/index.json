@@ -1,1 +1,6 @@
-{}
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-button": "/ui-plugins/vant/button/index"
+  }
+}
