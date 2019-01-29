@@ -19,7 +19,11 @@ Page({
       return false;
     }
     if (password === '') {
+<<<<<<< Updated upstream
       app.Toast('请输入密码');
+=======
+      app.Tools.showToast('请输入密码');
+>>>>>>> Stashed changes
       return false;
     }
 
