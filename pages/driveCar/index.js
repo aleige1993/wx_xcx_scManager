@@ -50,7 +50,6 @@ Page({
       }
     ]
   },
-<<<<<<< Updated upstream
 
   confirmStudy(e) {
     let _this = this;
@@ -81,8 +80,6 @@ Page({
     })
   },
 
-=======
-
   confirmStudy(e) {
     let _this = this;
     let index = e.currentTarget.dataset.index;
@@ -112,7 +109,6 @@ Page({
     })
   },
 
->>>>>>> Stashed changes
   loadCarList() {
     let _this = this;
     wx.showLoading({
