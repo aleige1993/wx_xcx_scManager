@@ -12,7 +12,7 @@ Page({
 
   loginout() {
     app.UserLogin.remove('userInfo');
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/login/index',
     })
   },

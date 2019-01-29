@@ -5,7 +5,7 @@
          <icon  class='iconfont icon-rukudengji'></icon>
          <text>入库</text>
       </navigator>
-      <navigator>
+      <navigator url="/pages/platform/outhous/index">
          <icon  class='iconfont icon-chuku'></icon>
          <text>出库</text>
       </navigator>
