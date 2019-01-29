@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    submitLoading: false
   },
 
   submitForm(e) {
@@ -22,12 +23,18 @@ Page({
       app.Tools.showToast('请输入密码');
       return false;
     }
-
+    let _this = this;
+    _this.setData({
+      submitLoading: true
+    })
     app.Formdata.post('/openapi/common/user/login', {
       "account": account,
       'password': md5.hexMD5(password),
       "code": "4"
     }, function (res) {
+      _this.setData({
+        submitLoading: false
+      })
       if (res.success && res.success === 'true') {
         app.UserLogin.set('userInfo', res.data);
         wx.switchTab({
