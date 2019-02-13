@@ -25,7 +25,6 @@ Page({
     }).catch(() => {
       // on cancel
     });
-    
   },
 
   /**
