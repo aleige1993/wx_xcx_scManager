@@ -1,45 +1,129 @@
 // pages/laundryOrder/index.js
-import Toast from '../../ui-plugins/vant/toast/toast';
+let app = getApp();
+
+import Dialog from '../../ui-plugins/vant/dialog/dialog';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scrollHeight:0,
-    scrollTop:0
+    orderStatus: ['2', '5', '6', '8'],
+    tabStatusActive: 0,
+    searchForm: {
+      limit: app.Config.PAGE_SIZE,
+      page: 1,
+      status: '2',
+      orderNo: ""
+    },
+    orderList: []
   },
-  getIndex(e){
-    console.log(e);
+
+  onChange(e) {
+    // console.log(e);
     this.setData({
-      scrollTop:0
+      'searchForm.orderNo': e.detail
     })
   },
-  bindtop(e){
-    console.log(123);
+
+  onSearch() {
+    this.setData({
+      "searchForm.page": 1,
+      'orderList': []
+    })
+    this.loadOrderList();
   },
-  binddown(e){
-    console.log(321);
+
+  tabStatus(e) {
+    // console.log(e);
+    this.setData({
+      'searchForm.page': 1,
+      'searchForm.status': this.data.orderStatus[e.detail.index],
+      'searchForm.orderNo': '',
+      'orderList': []
+    })
+    this.loadOrderList();
   },
+
+  editOrderStatus(e) {
+    // console.log(e);
+    let status = e.currentTarget.dataset.status;
+    let msg = e.currentTarget.dataset.msg;
+    let orderno = e.currentTarget.dataset.orderno;
+    let _this = this;
+    if (status === '9') {
+      Dialog.confirm({
+        title: '提示',
+        message: '你确定要拒绝该单吗？'
+      }).then(() => {
+        // on confirm
+        _this.submitOrderStatus(status, msg, orderno);
+      }).catch(() => {
+        // on cancel
+      });
+    } else {
+      this.submitOrderStatus(status, msg, orderno);
+    }
+  },
+
+  submitOrderStatus(status, msg, orderNo) {
+    let _this = this;
+    app.Formdata.post('/openapi/express/wechatapplet/express/wash/order/editStatus', {
+      status,
+      orderNo
+    }, function(res) {
+      if (res.success && res.success === 'true') {
+        console.log(msg);
+        app.Tools.showToast(msg);
+        _this.setData({
+          "searchForm.page": 1,
+          'orderList': []
+        })
+        _this.loadOrderList();
+      }
+    });
+  },
+
+  loadOrderList() {
+    let _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    });
+    app.Formdata.get('/openapi/express/wechatapplet/express/wash/order/query', this.data.searchForm, function (res) {
+      // console.log(res);
+      if (res.success && res.success === 'true') {
+        if (!res.data || !res.data.length) {
+          if (_this.data.searchForm.page > 1) {
+            app.Tools.showToast('没有更多的数据了')
+          }
+        } else {
+          _this.setData({
+            orderList: _this.data.orderList.concat(res.data)
+          })
+        }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 500);
+        setTimeout(function () {
+          wx.stopPullDownRefresh();
+        }, 1000);
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.loadOrderList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let _this = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          scrollHeight: res.windowHeight - 88 + 'px'
-        })
-      }
-    })
+
   },
 
   /**
@@ -67,14 +151,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      "searchForm.page": 1,
+      'orderList': []
+    })
+    this.loadOrderList();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      "searchForm.page": ++ this.data.searchForm.page
+    })
+    this.loadOrderList();
   },
 
   /**
@@ -82,10 +173,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  onPageScroll(event) {
-    this.setData({
-      scrollTop: event.scrollTop
-    });
   }
 })
