@@ -1,5 +1,7 @@
 // pages/login/resetPwd.js
 let app = getApp();
+let md5 = require('../../utils/md5.js')
+
 Page({
 
   /**
@@ -48,7 +50,9 @@ Page({
       mobile: this.data.mobile,
       smsCode: this.data.code,
       oldPassword: this.data.oldPaswd,
-      newPassword: this.data.newPaswd
+      newPassword: md5.hexMD5(this.data.newPaswd),
+      code: 4,
+      type: 2
     }
     app.Formdata.post('/openapi/members/express/password/update', parms, (res) => {
       if (res.success && res.success === "true") {
@@ -81,7 +85,7 @@ Page({
     let parms = {
       'mobile': this.data.mobile,
       'busiType': "2",
-      "userType": "1"
+      "userType": "0"
     }
     app.Formdata.post('/openapi/members/express/sms/smsCaptcha', parms, (res) => {
       if (res.code == '0000') {
