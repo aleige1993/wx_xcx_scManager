@@ -12,3 +12,8 @@ text-align: center;
 .p_panl navigator{
   color: #3984ff;
 }
+
+.get-code {
+  width: 100%;
+  height: 200rpx;
+}

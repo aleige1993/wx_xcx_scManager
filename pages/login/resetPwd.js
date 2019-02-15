@@ -49,7 +49,7 @@ Page({
     let parms = {
       mobile: this.data.mobile,
       smsCode: this.data.code,
-      oldPassword: this.data.oldPaswd,
+      oldPassword: md5.hexMD5(this.data.oldPaswd),
       newPassword: md5.hexMD5(this.data.newPaswd),
       code: 4,
       type: 2
