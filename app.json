@@ -1,8 +1,6 @@
 {
   "pages": [
-<<<<<<< Updated upstream
-=======
-    "pages/driveCar/index",
+    "pages/login/index",
     "pages/laundryOrder/index",
     "pages/driveCar/index",
     "pages/driveCar/driveDetails",
@@ -11,28 +9,17 @@
     "pages/usCenter/index",
     "pages/usCenter/setUser/index",
     "pages/login/resetPwd",
-    "pages/login/index",
->>>>>>> Stashed changes
-    "pages/login/resetPwd",
-    "pages/login/index",
-    "pages/laundryOrder/index",
     "pages/platform/outhous/queryForm",
     "pages/platform/warehous/index",
-    "pages/platform/index",
-    "pages/index/index",
     "pages/platform/warehous/getInfo",
     "pages/platform/warehous/wareResult",
     "pages/platform/outhous/outResult",
     "pages/platform/outhous/index",
     "pages/msgeModel/index",
     "pages/msgeModel/foundModel",
-    "pages/driveCar/index",
-    "pages/driveCar/driveDetails",
     "pages/laundryOrder/searOrder",
-    "pages/usCenter/index",
-    "pages/usCenter/addUser/addUser",
-    "pages/usCenter/setUser/index",
-    "pages/usCenter/addUser/index"
+    "pages/usCenter/addUser/index",
+    "pages/usCenter/addUser/addUser"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -59,13 +46,13 @@
         "text": "派件",
         "selectedIconPath": "/static/images/tab_user_b.png",
         "iconPath": "/static/images/tab_user_a.png"
-    },
-    {
+      },
+      {
         "pagePath": "pages/usCenter/index",
         "text": "账户",
         "selectedIconPath": "/static/images/tab_user_b.png",
         "iconPath": "/static/images/tab_user_a.png"
-    }
+      }
     ],
     "color": "#BFBFBF",
     "selectedColor": "#3984ff",

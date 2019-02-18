@@ -1,18 +1,24 @@
 <!--pages/msgeModel/index.wxml-->
 <view>
-<view wx:for="{{templateList}}" wx:key="{{tempNo}}" class='msge_box'>
-      <view class='msge_title'>
-        {{item.tempName}}{{index+1}}
-      </view>
-      <view class='msge_conter'>
-          <view>{{item.tempContent}}</view>
-      </view>
-      <view  class='msge_footer'>
-          <view class="default" wx:if="{{item.isDefault === '1'}}">已设置为默认</view>
-          <view bindtap='setDefault' data-tempno="{{item.tempNo}}"  wx:else >设置为默认</view>
-      </view>
+
+  <view wx:if="{{ templateList &&  !templateList.length}}" class='laundry-list null-data margin-top'>
+    <icon class='iconfont  icon-tiaobochuku'></icon>
+    <view>暂无数据</view>
+  </view>
+
+  <view wx:if="{{ templateList &&  templateList.length}}" wx:for="{{templateList}}" wx:key="{{tempNo}}" class='msge_box'>
+    <view class='msge_title'>
+      {{item.tempName}}{{index+1}}
     </view>
- <!-- <view class='marig-primary'>
+    <view class='msge_conter'>
+      <view>{{item.tempContent}}</view>
+    </view>
+    <view class='msge_footer'>
+      <view class="default" wx:if="{{item.isDefault === '1'}}">已设置为默认</view>
+      <view bindtap='setDefault' data-tempno="{{item.tempNo}}" wx:else>设置为默认</view>
+    </view>
+  </view>
+  <!-- <view class='marig-primary'>
     <van-button size="normal" type="primary" custom-class="primary">创建短信模板</van-button>
   </view> -->
 

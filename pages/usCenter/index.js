@@ -1,5 +1,7 @@
 // pages/usCenter/index.js
 let app = getApp();
+import Dialog from '../../ui-plugins/vant/dialog/dialog';
+
 Page({
 
   /**
@@ -11,10 +13,18 @@ Page({
   },
 
   loginout() {
-    app.UserLogin.remove('userInfo');
-    wx.navigateTo({
-      url: '/pages/login/index',
-    })
+    Dialog.confirm({
+      title: '提示',
+      message: '确定要退出当前账号？'
+    }).then(() => {
+      // on confirm
+      app.UserLogin.remove('userInfo');
+      wx.redirectTo({
+        url: '/pages/login/index'
+      })
+    }).catch(() => {
+      // on cancel
+    });
   },
 
   /**
@@ -22,6 +32,9 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
+    _this.setData({
+      showAddUser: app.UserLogin.get('userInfo').userLevel === '1'
+    })
     app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
       if (res.success && res.success === 'true') {
         _this.setData({

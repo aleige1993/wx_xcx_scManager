@@ -2,10 +2,10 @@
 
 <view>
   <view class='cell_box'>
-      <view class='cell_list'>
+      <!-- <view class='cell_list'>
         <view>头像</view>
         <view><image src='{{userinfo.avatarUri}}'></image></view>
-      </view>
+      </view> -->
        <view class='cell_list'>
         <view>姓名</view>
         <view>{{userinfo.manageName}}</view>

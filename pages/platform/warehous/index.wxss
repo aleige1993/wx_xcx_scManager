@@ -23,3 +23,8 @@
     margin-bottom: 10rpx;
     margin-right: 10rpx;
 }
+
+.scan-code {
+  width: 100%;
+  height: 200rpx;
+}

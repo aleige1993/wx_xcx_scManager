@@ -40,9 +40,11 @@ let post = (url, data, callback) => {
         }, 2000);
         return false;
       }
+      if (typeof data.success === 'boolean') {
+        data.success = data.success ? 'true' : 'false';
+      }
       if (data.success && data.success === 'false') {
         app.Tools.showToast(data.message);
-        return false;
       }
       callback(data);
     },
@@ -80,14 +82,15 @@ let get = (url, data, callback) => {
         }, 2000);
         return false;
       }
+      if (typeof data.success === 'boolean') {
+        data.success = data.success ? 'true' : 'false';
+      }
       if (data.success && data.success === 'false') {
         app.Tools.showToast(data.message);
-        return false;
       }
       callback(data);
     },
     fail(e) {
-      console.log('fail');
       app.Tools.showToast('系统繁忙, 请稍后再试');
     }
   });
