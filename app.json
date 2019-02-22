@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/index",
+    "pages/platform/warehous/getInfo",
     "pages/laundryOrder/index",
     "pages/driveCar/index",
     "pages/driveCar/driveDetails",
@@ -11,7 +12,6 @@
     "pages/login/resetPwd",
     "pages/platform/outhous/queryForm",
     "pages/platform/warehous/index",
-    "pages/platform/warehous/getInfo",
     "pages/platform/warehous/wareResult",
     "pages/platform/outhous/outResult",
     "pages/platform/outhous/index",
@@ -56,6 +56,6 @@
     ],
     "color": "#BFBFBF",
     "selectedColor": "#3984ff",
-    "borderStyle": "#e5e5e5"
+    "borderStyle": "white"
   }
 }

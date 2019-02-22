@@ -7,9 +7,25 @@ Page({
    */
   data: {
       company:[],
-    userInfo:[]
+    userInfo:[],
+      contaArr:[],
+      contaIndex:'',
+      cubeArr:[],
+      cubeIndex:'',
+      cubeName:'',
+      cubeNum:''
   },
 formSubmit(e){
+    if (!this.WxValidate.checkForm(e)) {
+        console.log(e);
+        const error = this.WxValidate.errorList[0];
+        wx.showToast({
+            title: error.msg,
+            icon: 'none',
+            duration: 2000
+        })
+        return false
+    }
     let company = this.data.company;
     let userInfo = this.data.userInfo;
     let message = {
@@ -18,7 +34,9 @@ formSubmit(e){
         'stationNo': userInfo.merchantNo,
         'expressNo': company.expressNo,
         'companyNo': company.companyNo,
-        'company': company.company
+        'company': company.company,
+        'cubeName': this.data.cubeName,
+        'cubeNum': this.data.cubeNum
     }
     app.Formdata.post('/openapi/express/wechatapplet/express/order/input', message,function(res){
         wx.navigateTo({
@@ -26,11 +44,42 @@ formSubmit(e){
         })
     })
  },
+    queryCabinet(){
+     app.Formdata.get('/openapi/express/wechatapplet/express/counter/queryCabinet', {}, (res) => {
+         if(res.code == '0000') {
+             this.setData({
+                 contaArr:res.data
+             })
+         }
+     })
+ },
+    contaChange(e){
+        let index = e.detail.value;
+        this.setData({
+            contaIndex: index,
+            cubeName: this.data.contaArr[index].cubeName
+        })
+        app.Formdata.get('/openapi/express/wechatapplet/express/counter/queryCell', { 'cubeName': this.data.contaArr[index].cubeName},(res)=>{
+            console.log(res);
+            if(res.code == '0000'){
+                this.setData({
+                    cubeArr: res.data
+                })
+            }
+        })
+    },
+    cubeChange(e){
+        let index = e.detail.value;
+        this.setData({
+            cubeIndex: index,
+            cubeNum: this.data.cubeArr[index].cubeNum
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options.data)
+      this.initValidate();
       let  _this = this;
       wx.getStorage({
           key: 'userInfo',
@@ -43,12 +92,14 @@ formSubmit(e){
       _this.setData({
         company: JSON.parse(options.data)
     })
+      this.queryCabinet();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
   },
 
   /**
@@ -91,5 +142,41 @@ formSubmit(e){
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    initValidate() {
+        let { expressNo, mobile  } = this.data.company
+        const rules = {
+            expressNo: {
+                required: true
+            },
+            mobile: {
+                required: true,
+                tel: true
+            },
+            cubeName: {
+                required: true
+            },
+            cubeNum: {
+                required: true
+            }
+        }
+
+        const messages = {
+            expressNo: {
+                required: "快递单号不能为空"
+            },
+            mobile: {
+                required: "请输入手机号",
+                tel: "请输入正确的手机号"
+            },
+            cubeName: {
+                required: "请选择货柜"
+            },
+            cubeNum: {
+                required: "请选择货柜层数"
+            }
+        }
+        // 创建实例对象 
+        this.WxValidate = new app.WxValidate(rules, messages)
+    }
 })

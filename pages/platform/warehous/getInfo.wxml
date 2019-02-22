@@ -1,50 +1,41 @@
 <!--pages/platform/warehous/getInfo.wxml-->
 <view>
-<form bindsubmit="formSubmit">
-    <van-cell-group>
-      <van-field
-        value="{{ company.expressNo}}"
-        label="快递单号"
-        placeholder="请输入快递单号"
-        input-align="right"
-        name="expressNo"
-      />
-      <van-field
-        value="{{ company.mobile }}"
-        label="手机号"
-        input-align="right"
-        placeholder="请输入手机号"
-        name="mobile"
-      />
-      <van-cell
-        title="入库单号"
-        title-width="140rpx"
-        value="{{company.orderNo}}"
-      />
-      <van-cell
-        title="快递公司"
-        title-width="140rpx"
-        value="{{company.company}}"
-      />
-      <van-cell
-        title="入库操作"
-        title-width="140rpx"
-        value="{{userInfo.userName}}"
-      />
-      <van-cell
-        title="入库地址"
-        title-width="140rpx"
-        value="{{company.stationAddr}}"
-      />
-       <van-cell
-        title="入库时间"
-        title-width="140rpx"
-        value="{{company.gmtCreate}}"
-      />
-    </van-cell-group>
+    <form bindsubmit="formSubmit">
+        <van-cell-group>
+            <van-field value="{{ company.expressNo}}" label="快递单号" placeholder="请输入快递单号" input-align="right" name="expressNo" />
+            <van-field value="{{ company.mobile }}" label="手机号" input-align="right" placeholder="请输入手机号" name="mobile" />
+            <van-cell title="入库单号" title-width="140rpx" value="{{company.orderNo}}" />
+            <van-cell title="快递公司" title-width="140rpx" value="{{company.company}}" />
+            <van-cell title="入库操作" title-width="140rpx" value="{{userInfo.userName}}" />
+            <van-cell title="入库地址" title-width="140rpx" value="{{company.stationAddr}}" />
+            <van-cell title="入库时间" title-width="140rpx" value="{{company.gmtCreate}}" />
+        </van-cell-group>
+        <view class='cell_box'>
+            <view class='label'>货柜选择</view>
+            <view class='value'>
+                <picker bindchange="contaChange" value="{{contaIndex}}" range="{{contaArr}}" range-key="cubeName" name="cubeName"  >
+                    <view class="picker">
+                       {{contaArr[contaIndex].cubeName?contaArr[contaIndex].cubeName:'请选择货柜'}}
+                        <icon class='iconfont icon-you1'></icon>
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class='cell_box' wx:if="{{cubeArr.length>0}}">
+            <view class='label'>货柜层数</view>
+            <view class='value'>
+                <picker bindchange="cubeChange" value="{{cubeIndex}}" range="{{cubeArr}}" range-key="cubeNum" name="cubeNum" >
+                    <view class="picker">
+                        {{cubeArr[cubeIndex].cubeNum?cubeArr[cubeIndex].cubeNum:'请选择货柜层数'}}
+                        <icon class='iconfont icon-you1'></icon>
+                    </view>
+                </picker>
+            </view>
+        </view>
 
-    <view class='marig-primary'>
-        <button class="button" form-type='submit' size="normal" >提交</button>
-    </view>
+
+        <view class='marig-primary'>
+            <button class="button" form-type='submit' size="normal">提交</button>
+        </view>
     </form>
 </view>
