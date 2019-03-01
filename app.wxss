@@ -155,3 +155,10 @@ overflow: hidden;
     font-size: 100px;
     color: #999;
 }
+.back_view{
+    display:block;
+    flex-direction: column;
+}
+.decoration{
+    text-decoration:line-through;
+}

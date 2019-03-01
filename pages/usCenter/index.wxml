@@ -2,7 +2,7 @@
 <view>
   <view class='us-img-box'>
     <view class='box-user'>
-      <image src='../../static/images/error.png'></image>
+      <image bindtap='selectUserIcon'  src="{{userinfo.avatarUri ? userinfo.avatarUri : '../../static/images/hader.png'}}"></image>
       <view>
         <text>{{userinfo.userName}}</text>
         <text>{{userinfo.mobile}}</text>
@@ -14,14 +14,14 @@
   <view>
     <view class='glup_box'>
       <view>
-        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>今日收件</text>
       </view>
       <view>{{userinfo.inPutTodayNum}}</view>
     </view>
     <view class='glup_box'>
       <view>
-        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>出库剩余</text>
       </view>
       <view>{{userinfo.outRemainNum}}</view>
@@ -29,7 +29,7 @@
 
     <navigator wx:if="{{showAddUser}}" class='glup_box' url="/pages/usCenter/addUser/index">
       <view>
-        <icon class='iconfont icon-ico_meiyoushuju'></icon>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
         <text>员工管理</text>
       </view>
       <view>
@@ -38,8 +38,8 @@
     </navigator>
     <navigator class='glup_box' url="/pages/usCenter/setUser/index">
       <view>
-        <icon class='iconfont icon-ico_meiyoushuju'></icon>
-        <text>驿站设置</text>
+        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+        <text>驿站信息</text>
       </view>
       <view>
         <icon class='iconfont icon-you1'></icon>

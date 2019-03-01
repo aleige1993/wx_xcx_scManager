@@ -1,4 +1,5 @@
 {
+ "navigationBarTitleText":"学员列表",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "van-button": "/ui-plugins/vant/button/index"

@@ -2,11 +2,13 @@
 
 <view>
     <view class='step_panl'>
-      <van-steps
+
+      <!-- <van-steps
         steps="{{ steps }}"
         active="{{ active }}"
         active-color="#3984ff"
-      />
+      /> -->
+       <view class='steps'>{{active == 0 ? '1.验证手机号码' : '2.设置新密码'}}</view>
     </view>
     
     <view class='steps_view'>

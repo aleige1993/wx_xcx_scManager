@@ -1,17 +1,16 @@
 {
   "pages": [
     "pages/login/index",
+    "pages/platform/index",
+    "pages/platform/warehous/index",
     "pages/platform/warehous/getInfo",
     "pages/laundryOrder/index",
     "pages/driveCar/index",
     "pages/driveCar/driveDetails",
-    "pages/platform/index",
-    "pages/index/index",
     "pages/usCenter/index",
     "pages/usCenter/setUser/index",
     "pages/login/resetPwd",
     "pages/platform/outhous/queryForm",
-    "pages/platform/warehous/index",
     "pages/platform/warehous/wareResult",
     "pages/platform/outhous/outResult",
     "pages/platform/outhous/index",
@@ -32,20 +31,20 @@
       {
         "pagePath": "pages/laundryOrder/index",
         "text": "洗衣",
-        "selectedIconPath": "/static/images/tab_home_b.png",
-        "iconPath": "/static/images/tab_home_a.png"
+        "selectedIconPath": "/static/images/tab_clothes_b.png",
+        "iconPath": "/static/images/tab_clothes_a.png"
       },
       {
         "pagePath": "pages/driveCar/index",
         "text": "学车",
-        "selectedIconPath": "/static/images/tab_user_b.png",
-        "iconPath": "/static/images/tab_user_a.png"
+        "selectedIconPath": "/static/images/tab_cart_b.png",
+        "iconPath": "/static/images/tab_cart_a.png"
       },
       {
         "pagePath": "pages/platform/index",
         "text": "派件",
-        "selectedIconPath": "/static/images/tab_user_b.png",
-        "iconPath": "/static/images/tab_user_a.png"
+        "selectedIconPath": "/static/images/tab_pie_b.png",
+        "iconPath": "/static/images/tab_pie_a.png"
       },
       {
         "pagePath": "pages/usCenter/index",

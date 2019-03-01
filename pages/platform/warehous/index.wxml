@@ -1,8 +1,7 @@
 <!--pages/library/warehous/index.wxml-->
 
 <view>
-    <image class="scan-code" bindtap='getCode' src='../../../static/images/error.png'></image>
-   
+    <image class="scan-code" bindtap='getCode' src='../../../static/images/saosao.png'></image>
    <form bindsubmit="formSubmit" >
     <van-cell-group>
       <van-field
@@ -37,7 +36,7 @@
    
    </form>
     
-    <view class='clickAuto'>
+    <!-- <view class='clickAuto'>
         <navigator class='c-blue'  url="/pages/msgeModel/index">去选择短信模板</navigator>
-    </view>
+    </view> -->
 </view>

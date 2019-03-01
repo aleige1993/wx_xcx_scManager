@@ -26,22 +26,45 @@ Page({
       // on cancel
     });
   },
+//点击上传头像
+    selectUserIcon() {
+        let _this = this;
+        wx.chooseImage({
+            count: 1,
+            success: function (res) {
+                app.Formdata.uploadFile(res, (path) => {
+                    console.log(path);
+                    if (path[0]){
+                        _this.setData({
+                            'userinfo.avatarUri': path[0]
+                        })
+                        app.Formdata.post('/openapi/express/wechatapplet/express/manager/update', { avatarUri: path[0] },(res)=>{           
+                        let title = '';
+                        if(res.code == '0000'){
+                            title = '上传成功';
+                        }else{
+                            title = '上传失败';
+                        }
+                            wx.showToast({
+                                title: title,
+                                icon:'none'
+                            })
+                        })
 
+                    }
+                    
+                })
+            },
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
     _this.setData({
-      showAddUser: app.UserLogin.get('userInfo').userLevel === '1'
+      showAddUser: app.UserLogin.get('userInfo').userLevel == '1' ? true : false
     })
-    app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
-      if (res.success && res.success === 'true') {
-        _this.setData({
-          userinfo: res.data
-        })
-      }
-    });
   },
 
   /**
@@ -55,7 +78,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+      let  _this = this;
+      app.Formdata.get('/openapi/express/wechatapplet/express/manager/queryUserCenter', {}, function (res) {
+          if (res.success && res.success === 'true') {
+              _this.setData({
+                  userinfo: res.data
+              })
+          }
+      });
   },
 
   /**

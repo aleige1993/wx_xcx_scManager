@@ -39,9 +39,11 @@ formSubmit(e){
         'cubeNum': this.data.cubeNum
     }
     app.Formdata.post('/openapi/express/wechatapplet/express/order/input', message,function(res){
-        wx.navigateTo({
-            url: '/pages/platform/warehous/wareResult?data=' + JSON.stringify(res)
-        })
+        if(res.code == '0000'){
+            wx.redirectTo({
+                url: '/pages/platform/warehous/wareResult?data=' + JSON.stringify(res)
+            })
+        }
     })
  },
     queryCabinet(){

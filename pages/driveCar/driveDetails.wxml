@@ -1,6 +1,6 @@
 <!--pages/driveCar/driveDetails.wxml-->
 <view class='userInfo'>
-  <view class='infotext'>学员信息</view>
+  <!-- <view class='infotext'>学员信息</view> -->
   <van-cell-group>
     <van-cell
       title="姓名"

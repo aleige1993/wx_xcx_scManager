@@ -3,7 +3,7 @@
   <view wx:for="{{userList}}" wx:key="{{index}}" class='add_user_box'>
     <view class='us_view'>
       <image wx:if="{{item.avatarUri}}" src='{{item.avatarUri}}'></image>
-      <image wx:else src='../../../static/images/error.png'></image>
+      <image wx:else src='../../../static/images/hader.png'></image>
       <view class='us_details'>
         <text>{{item.userName}}</text>
         <text>{{item.mobile}}</text>

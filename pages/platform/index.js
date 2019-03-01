@@ -15,6 +15,11 @@ Page({
 //       url: '../logs/logs'
 //     })
 //   },
+    goToback(e){
+        wx.navigateTo({
+            url: '/pages/platform/outhous/queryForm',
+        })
+    },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

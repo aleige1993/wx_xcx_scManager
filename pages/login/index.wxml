@@ -22,7 +22,7 @@
     </form>
     
     <view class='findpwd'>
-        <navigator url="/pages/login/resetPwd" class='c-blue'>找回密码</navigator>
+        <navigator url="/pages/login/resetPwd" hover-class='none'  class='c-blue'>找回密码</navigator>
     </view>
 </view>
 

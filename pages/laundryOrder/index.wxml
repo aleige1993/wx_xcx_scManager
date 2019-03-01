@@ -27,13 +27,18 @@
         <view class='order_title'>
           <view>订单编号：{{item.orderNo}}</view>
           <view>联系电话：{{item.mobile}}</view>
+            <view>备注：{{item.memo ? item.memo : '暂无备注'}}</view>
         </view>
         <view class='order_box'>
           <view wx:for="{{item.orderGoods}}" wx:key="{{item.orderNo}}" wx:for-item="goodsItem" class='move_box'>
             <image src='{{goodsItem.picUrl}}'></image>
             <view class='order_vim'>
               <view>{{goodsItem.goodName}}</view>
-              <view class='c-red'>￥{{goodsItem.price}}</view>
+              <view class='back_view'>
+                 <view class='c-999 decoration'>￥{{goodsItem.price ? goodsItem.price : '' }}</view>
+                 <view class='c-red'>￥{{goodsItem.realPrice ? goodsItem.realPrice : '' }}</view>
+              </view>
+             
             </view>
             <view class='order_num'>×{{goodsItem.num}}</view>
           </view>

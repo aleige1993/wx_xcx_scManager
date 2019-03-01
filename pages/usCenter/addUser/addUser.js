@@ -8,7 +8,6 @@ Page({
    */
   data: {
     userInfo: {
-      image: '../../../static/images/error.png',
       mobile: '',
       userName: '',
       pwd: ''
@@ -60,8 +59,8 @@ Page({
       if (res.success && res.success === 'true') {
         app.Tools.showToast('添加成功');
         setTimeout(function() {
-          wx.navigateTo({
-            url: '/pages/usCenter/addUser/index',
+            wx.navigateBack({
+                delta: 2
           })
         }, 2000)
       }

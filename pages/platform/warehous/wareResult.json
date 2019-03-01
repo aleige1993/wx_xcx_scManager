@@ -1,4 +1,5 @@
 {
+    "navigationBarTitleText": "入库结果",
   "usingComponents": {
     "van-button": "/ui-plugins/vant/button/index"
   }

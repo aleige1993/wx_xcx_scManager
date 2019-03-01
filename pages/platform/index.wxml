@@ -12,6 +12,6 @@
   </view>
   <view class='code_input'>
       <icon class='iconfont icon-xiazai5'></icon>
-      <input placeholder='手机号后四位/快递单号/包裹代码' type='text'></input>
+      <input placeholder='手机号后四位/快递单号' disabled='ture' bindtap='goToback' type='text' ></input>
   </view>
 </view>

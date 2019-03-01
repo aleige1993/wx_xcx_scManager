@@ -1,4 +1,5 @@
 {
+"navigationBarTitleText": "洗衣订单",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "van-search": "/ui-plugins/vant/search/index",

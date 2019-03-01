@@ -29,11 +29,11 @@ Page({
             code: e.detail.value.code,
             userPhone: e.detail.value.userPhone
         })
-        if (e.detail.value.code==""){
-            app.Tools.showToast('快递单号不能为空');
+        if (!(/^[0-9a-zA-Z]+$/.test(e.detail.value.code))){
+            app.Tools.showToast('非正常快递单号');
             return false;
-        } else if (e.detail.value.userPhone == ""){
-            app.Tools.showToast('手机号不能为空');
+        } else if (!(/^1[34578]\d{9}$/.test(e.detail.value.userPhone))){
+            app.Tools.showToast('非正常手机号');
             return false;
         } else if (this.data.companyData.companyNo==""){
             app.Tools.showToast('请选择快递');
@@ -46,11 +46,12 @@ Page({
              'mobile': this.data.userPhone
          }
         app.Formdata.post('/openapi/express/wechatapplet/express/order/add', company,function(res){
-            wx.navigateTo({
-                url: '/pages/platform/warehous/getInfo?data=' + JSON.stringify(res.data)
-            })
+            if(res.code== "0000"){
+                wx.navigateTo({
+                    url: '/pages/platform/warehous/getInfo?data=' + JSON.stringify(res.data)
+                })
+            }
         })
-      
     },
     shoprChange(e){
         this.setData({
@@ -96,7 +97,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+      this.setData({
+          code:'',
+          userPhone:''
+      })
   },
 
   /**
