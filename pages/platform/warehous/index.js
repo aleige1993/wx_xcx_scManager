@@ -6,13 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    code:'',
+     code:'',
       userPhone:'',
       shopIndex:'',
       shopArr:'',
       allData:'',
       companyData:''
   },
+    onClickIcon(e){
+        wx.navigateTo({
+            url: '/pages/platform/warehous/takePhoto'
+        })
+    },
   getCode(){
     let  _this = this;
     wx.scanCode({
@@ -29,10 +34,11 @@ Page({
             code: e.detail.value.code,
             userPhone: e.detail.value.userPhone
         })
-        if (!(/^[0-9a-zA-Z]+$/.test(e.detail.value.code))){
+        // !(/^[0-9a-zA-Z]+$/.test(e.detail.value.code))
+        if (e.detail.value.code == ''){
             app.Tools.showToast('非正常快递单号');
             return false;
-        } else if (!(/^1[34578]\d{9}$/.test(e.detail.value.userPhone))){
+        } else if (!(/^1\d{10}$/.test(e.detail.value.userPhone))){
             app.Tools.showToast('非正常手机号');
             return false;
         } else if (this.data.companyData.companyNo==""){
@@ -64,7 +70,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(1);
+      app.globalData.codePhone = ""
       let  _this = this;
       app.Formdata.get('/openapi/express/wechatapplet/express/company/query', {},function(res){
           if (res.code=="0000"){
@@ -90,17 +96,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      if (app.globalData.codePhone) {
+          this.setData({
+              userPhone: app.globalData.codePhone
+          })
+      }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-      this.setData({
-          code:'',
-          userPhone:''
-      })
   },
 
   /**

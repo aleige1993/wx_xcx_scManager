@@ -1,0 +1,77 @@
+<!--pages/laundryOrder/index.wxml-->
+<view class='laundryOrder'>
+    <view class='switchView'>
+        <view class='c-666 switcFont'>当日可租</view>
+        <switch checked="{{isChecked}}" color="#3984ff" bindchange="switchChange" />
+    </view>
+
+    <view class='order_soso'>
+        <van-search value="{{ searchForm.orderNo }}" placeholder="搜索用户手机号" use-action-slot bind:search="onSearch" bind:change="onChange">
+            <view slot="action" bind:tap="onSearch">搜索</view>
+        </van-search>
+    </view>
+    <view class='order-panl'>
+        <van-tabs active="{{tabStatusActive}}" bind:click="tabStatusTwo">
+            <van-tab data-status="2" title="新订单"></van-tab>
+            <van-tab data-status="3" title="待交车"></van-tab>
+            <van-tab data-status="4" title="已完成"></van-tab>
+            <van-tab data-status="6" title="已拒绝"></van-tab>
+        </van-tabs>
+        <!-- {{searchForm.status}} -->
+
+        <view wx:if="{{ orderList &&  !orderList.length}}" class='laundry-list null-data margin-top'>
+            <icon class='iconfont  icon-tiaobochuku'></icon>
+            <view>暂无数据</view>
+        </view>
+
+        <view wx:if="{{ orderList &&  orderList.length}}" class="section">
+            <view wx:for="{{orderList}}" wx:key="{{item.orderNo}}" class='order_panl'>
+                <view class='order_title'>
+                    <view>订单编号：{{item.orderNo}}</view>
+                     <view class='c-red' wx:if="{{item.status=='4'}}">已完成</view>
+                    <view class='c-red' wx:if="{{item.status=='6'}}">已退款</view>
+                </view>
+                <view class='order_box'>
+                    <view class='move_box' wx:for="{{item.carList}}" wx:key="orderCar" wx:for-item="itemCar">
+                        <view class='car_panl'>
+                            <view class='pricepanl'>
+                                <view class='font-w6'>{{itemCar.carName}}</view>
+                                <view class='priceView'>
+                                    <text class='c-yellow'> 非会员：￥{{itemCar.price}}/日</text>
+                                     <text class='c-blue'>会员：￥{{itemCar.memberPrice}}/日</text>
+                                </view>
+                            </view>
+                            <view>
+                                <text  class='c-666'>{{item.startShortTime}} ~{{item.endShortTime}}</text>
+                                <text class='c-blue'>{{item.days}}天</text>
+                            </view>
+                            <view class='c-666'>用户：{{item.mobile}}</view>
+                            <view class='c-666'>下单时间：{{item.modifyTime}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class='order_footer'>
+                    <view>
+                        已付金额：
+                        <text class='c-red'>¥{{item.paymentAmount}}</text>
+                        <!-- 优惠：<text class='c-red'>¥{{item.discounts}}</text> -->
+                    </view>
+                    <view wx:if="{{ searchForm.statusList[0] === '2' }}">
+                        <button class='danger' data-msg="拒单成功" data-orderno="{{item.orderNo}}" data-status="6" bindtap='editOrderStatus'>拒绝接单</button>
+                        <button data-orderno="{{item.orderNo}}" data-status="3" data-msg="接单成功" bindtap='editOrderStatus'>确认接单</button>
+                    </view>
+                    <view wx:if="{{ searchForm.statusList[0] === '3' }}">
+                        <button class='danger' data-msg="拒单成功" data-orderno="{{item.orderNo}}" data-status="6" bindtap='editOrderStatus'>拒绝接单</button>
+                        <button data-orderno="{{item.orderNo}}" data-status="4" data-msg="操作成功" bindtap='editOrderStatus'>确认交车</button>
+                    </view>
+                </view>
+            </view>
+
+
+        </view>
+    </view>
+
+</view>
+
+
+<van-dialog id="van-dialog" />

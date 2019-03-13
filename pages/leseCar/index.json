@@ -1,0 +1,12 @@
+{
+"navigationBarTitleText": "租车订单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+      "van-switch-cell": "/ui-plugins/vant/switch-cell/index",
+    "van-search": "/ui-plugins/vant/search/index",
+    "van-tab": "/ui-plugins/vant/tab/index",
+    "van-tabs": "/ui-plugins/vant/tabs/index",
+    "van-button": "/ui-plugins/vant/button/index",
+    "van-dialog": "/ui-plugins/vant/dialog/index"
+  }
+}

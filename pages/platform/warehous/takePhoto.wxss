@@ -1,0 +1,16 @@
+/* pages/platform/warehous/takePhoto.wxss */
+.maginTo{
+    margin-top: 400rpx;
+}
+.maign10{
+    margin: 20rpx;
+}
+
+.takephoto{
+  border-radius: 999px; 
+  box-shadow: 0 0 50rpx #ffd8a2;
+}
+.biaochi{
+  background:#fe9d20;
+  position: absolute;
+}

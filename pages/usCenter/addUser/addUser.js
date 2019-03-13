@@ -8,6 +8,7 @@ Page({
    */
   data: {
     userInfo: {
+    nickName:'',
       mobile: '',
       userName: '',
       pwd: ''
@@ -31,11 +32,16 @@ Page({
   },
 
   submitForm(e) {
+      let nickName = e.detail.value.nickName;
     let userName = e.detail.value.userName;
     let mobile = e.detail.value.mobile;
     let pwd = e.detail.value.pwd;
+      if (nickName === '') {
+          app.Tools.showToast('员工姓名不能为空');
+          return false;
+      }
     if (userName === '') {
-      app.Tools.showToast('姓名不能为空');
+      app.Tools.showToast('用户名不能为空');
       return false;
     }
     if (mobile === '') {
@@ -48,6 +54,7 @@ Page({
     }
 
     this.setData({
+        'userInfo.nickName': nickName,
       'userInfo.userName': userName,
       'userInfo.mobile': mobile,
       'userInfo.pwd': pwd
@@ -57,7 +64,9 @@ Page({
       ..._this.data.userInfo
     }, function(res) {
       if (res.success && res.success === 'true') {
-        app.Tools.showToast('添加成功');
+        wx.showToast({
+            title: '添加成功'
+        })
         setTimeout(function() {
             wx.navigateBack({
                 delta: 2

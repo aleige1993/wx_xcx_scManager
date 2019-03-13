@@ -25,6 +25,27 @@ view{
   display:flex;
 }
 /* 颜色 */
+.c-ccc{
+  color: #ccc;
+}
+.c-333{
+      color: #333 !important;
+}
+.c-666{
+    color: #666666;
+}
+.c-bf{
+  color: #bfbfbf;
+}
+.b-blue{
+  border:1rpx solid #3984ff;
+}
+.c-red{
+  color: #ea857d;
+}
+.c-powder{
+      color: #ff4c5e !important;
+}
 .c-yellow {
     color: #ff7b20;
 }

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "AI识别",
+  "usingComponents": {
+      "van-field": "/ui-plugins/vant/field/index"
+  }
+}

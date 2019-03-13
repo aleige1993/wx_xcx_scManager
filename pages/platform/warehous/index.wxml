@@ -15,7 +15,10 @@
           clearable
           placeholder="请输入手机号"
         name="userPhone"
+          icon="photograph"
+        bind:click-icon="onClickIcon"
         />
+       
       </van-cell-group>
       <view class='waiter'>
         <view class='c-333 font-w6'>选择快递</view>

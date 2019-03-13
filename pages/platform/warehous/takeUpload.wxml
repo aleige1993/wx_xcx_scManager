@@ -1,0 +1,14 @@
+<!--pages/platform/warehous/takeUpload.wxml-->
+<canvas canvas-id="image-canvas" style='width:100%; height:200px;'></canvas>
+
+<van-field
+    value="{{phone}}"
+    clearable
+    label="手机号码"
+    placeholder="请检查电话是否正常"
+    bind:change="phoneChange"
+  />
+ <view class='marig-primary '>
+        <button class="button"  bindtap="backToIndex">确定</button>
+</view>
+

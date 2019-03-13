@@ -1,0 +1,105 @@
+/* pages/laundryOrder/index.wxss */
+
+.order_panl{
+  margin-top:30rpx;
+}
+.order_title{
+display: flex;
+justify-content: space-between;
+  padding:20rpx 30rpx;
+  border-top:1px solid #eee;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+.order_title view{
+  margin-bottom: 10rpx;
+}
+.order_title view:last-child{
+  margin-bottom: 0;
+}
+.order_box{
+
+}
+.move_box{
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding:30rpx;
+}
+.move_box:last-child{
+  border-bottom: 0;
+}
+.move_box image{
+  width:200rpx;
+  height:200rpx;
+}
+.move_box view{
+  display: flex;
+}
+.move_box view.order_vim{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+  margin-left: 20rpx;
+}
+.move_box view.order_num{
+  align-items: center;
+}
+.order_footer{
+  display: flex;
+  padding:20rpx 30rpx;
+  justify-content:space-between;
+  align-items: center;
+   border-top: 1px  solid #eee;
+  border-bottom: 1px  solid #eee;
+}
+.order_footer button{
+  display: inline-block;
+  color: #fff;
+  background-color: #3984ff;
+}
+.order_footer button.danger {
+  background-color: red;
+}
+.order_footer button:nth-child(2) {
+  margin-left: 10rpx;
+}
+.switchView{
+    display: flex;
+    justify-content: space-between;
+    padding:20rpx 30rpx;
+}
+.switcFont{
+    font-weight: 600;
+}
+.car_panl{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.car_panl view{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.car_panl view:last-child{
+    margin-bottom: 0;
+}
+.wx-switch-input{width:45px !important;height:22px !important;}
+.wx-switch-input::before{width:45px !important;height: 22px !important;}
+.wx-switch-input::after{width: 22px !important;height: 20px !important;}
+.pricepanl{
+    display: flex;
+    justify-content: space-between;
+}
+.pricepanl .priceView{
+    display: flex;
+    flex-direction: column;
+}
+.pricepanl .priceView text{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24rpx;
+}
+
