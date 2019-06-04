@@ -7,8 +7,63 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    expressList:[],
+    parmes:{
+        page:1,
+        limit:5,
+        appointmentDate: app.Utils.GetDateStr(0),
+        appointmentBeginTime: app.Utils.GetDateStr(0) + ' 00:00:00',
+        appointmentEndTime: app.Utils.GetDateStr(0) + ' 23:59:00',    
+    },
+      createStartTime:null,
+      createEndTime:null
   },
+  //拨打电话
+    clickMobile(e){
+        let mobile = e.currentTarget.dataset.mobile
+        wx.makePhoneCall({
+            phoneNumber: mobile
+        })
+    },
+    createStartChange(e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            'parmes.appointmentBeginTime': this.data.parmes.appointmentDate+' '+ e.detail.value+':00',
+            'createStartTime': e.detail.value
+        })
+    },
+    createEndChange(e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            'parmes.appointmentEndTime': this.data.parmes.appointmentDate + ' ' + e.detail.value + ':00',
+            'createEndTime': e.detail.value
+        })
+    },
+chengOrder(){
+    this.setData({
+        expressList: [],
+        'parmes.page': 1
+    })
+    this.getDeliveryOrder();
+},
+getDeliveryOrder () { 
+    let _this = this;
+    app.Formdata.get('/openapi/express/wechatapplet/express/order/queryDeliveryOrder', _this.data.parmes, (res)=>{
+        if(res.code == '0000') {
+            if (res.data && res.data.length > 0) {
+                _this.setData({
+                    expressList: _this.data.expressList.concat(res.data)
+                })
+            } else {
+                if (_this.data.parmes.page > 1) {
+                    app.Tools.showToast('没有更多数据')
+                }
+            }
+            wx.stopPullDownRefresh()
+        }
+    })
+},
   //事件处理函数
 //   bindViewTap: function() {
 //     wx.navigateTo({
@@ -55,5 +110,36 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+    onReachBottom: function () {
+        this.setData({
+            "parmes.page": ++this.data.parmes.page
+        })
+        this.getDeliveryOrder();
+    },
+    onPullDownRefresh: function () {
+        this.setData({
+            "parmes.page": 1,
+            "parmes.appointmentDate": app.Utils.GetDateStr(0),
+            "parmes. appointmentBeginTime": app.Utils.GetDateStr(0) + ' 00:00:00',
+            "parmes.appointmentEndTime": app.Utils.GetDateStr(0) + ' 23:59:00',
+            "createStartTime": null,
+            "createEndTime": null,
+            'expressList': []
+        })
+        this.getDeliveryOrder();
+    },
+    onShow(){
+        this.setData({
+            "parmes.page": 1,
+            "parmes.appointmentDate": app.Utils.GetDateStr(0) ,
+            "parmes. appointmentBeginTime": app.Utils.GetDateStr(0) + ' 00:00:00',
+            "parmes.appointmentEndTime": app.Utils.GetDateStr(0) + ' 23:59:00',
+            "createStartTime": null,
+            "createEndTime": null,
+            'expressList': []
+        })
+        this.getDeliveryOrder();
+    },
 })
+

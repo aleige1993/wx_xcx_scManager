@@ -9,7 +9,7 @@ Page({
   data: {
     sreachForm: {
       page: 1,
-      limit: app.Config.PAGE_SIZE
+      limit: 10
     },
     carList: [],
     studyCarEnum: [

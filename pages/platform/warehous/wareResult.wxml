@@ -15,7 +15,7 @@
       <view class='error_panl'>
         <icon class='iconfont icon-shibai'></icon>
         <view class='error_title'>入库失败请重新扫码</view>
-        <view class='error_lable'  bindtap='goback'>多次扫码失败可手动输入</view>
+        <view class='error_lable' >多次扫码失败可手动输入</view>
       </view>
   </view>
 

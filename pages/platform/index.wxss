@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import "../../pages/dispatchSet/index.wxss";
 page{
   background-color: #f2f2f2;
 }
@@ -41,4 +42,44 @@ page{
 .code_input input{
   flex: 1;
   padding-left: 10px;
+}
+.pickerIpu{
+    width: 120rpx;
+    text-align: center;
+    line-height: 56rpx;
+    margin-top: 44rpx;
+    color: #fff;
+    background-color: #3984ff;
+}
+.new-express {
+  padding: 10px 20rpx;
+  background: #fff;
+}
+.new-express .c-violet{
+padding-left: 20rpx;
+}
+.new-express-list {
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 10rpx;
+  border: 1px solid #c4e7f2;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.new-express-list > view {
+  margin-bottom: 10rpx;
+}
+.new-express-list view > text:first-child {
+  white-space: nowrap;
+  color: #444;
+}
+.new-express-list .flex {
+  display: flex;
+  justify-content: space-between;   
+}
+.new-express-list .center {
+  padding: 10rpx 0;
+  text-align: center;
+}
+.order_box{
+    margin: 0 30rpx 60rpx 30rpx;
 }

@@ -1,0 +1,101 @@
+/* pages/laundryOrder/index.wxss */
+page{
+    background-color: #f2f2f2;
+}
+.switchView{
+    display: flex;
+    justify-content: space-between;
+    padding:20rpx 30rpx;
+    background-color: #fff;
+}
+.switcFont{
+    font-weight: 600;
+}
+.car_panl{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.car_panl view{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.car_panl view:last-child{
+    margin-bottom: 0;
+}
+.wx-switch-input{width:45px !important;height:22px !important;}
+.wx-switch-input::before{width:45px !important;height: 22px !important;}
+.wx-switch-input::after{width: 22px !important;height: 20px !important;}
+.pricepanl{
+    display: flex;
+    justify-content: space-between;
+}
+.pricepanl .priceView{
+    display: flex;
+    flex-direction: column;
+}
+.pricepanl .priceView text{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24rpx;
+}
+.dispat{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    background-color:#fff;
+    height: 140rpx;
+    overflow: hidden;
+}
+.title{
+    color: #3984ff;
+    padding-left: 10rpx;
+}
+.picker{
+    border: 1px solid #e2e2e2;
+    padding: 10rpx 20rpx;
+    color: #444;
+    border-radius:10rpx; 
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.text{
+    width: 40rpx;
+    line-height: 140rpx;
+    text-align: center;
+}
+.disone{
+    width: 50%;
+}
+.pickerIpu{
+     border: 1px solid #e2e2e2;
+    color: #444;
+    border-radius:10rpx; 
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.pickerIpu input{
+    font-size: 24rpx;
+    padding-left:10rpx;
+}
+.buttom_view{
+    display: flex;
+    background-color: #fff;
+    border-top:1px solid #eee; 
+}
+.buttom_view view{
+    width: 50%;
+    line-height: 70rpx;
+    text-align: center;
+}
+.buttom_view view:first-child{
+    border-right:1px solid #eee; 
+}
+.button{
+    background-color: #3984ff;
+    color: #fff;
+    margin: 30rpx auto;
+    width: 80%;
+}

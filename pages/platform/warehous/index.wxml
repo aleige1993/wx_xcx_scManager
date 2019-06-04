@@ -17,8 +17,22 @@
         name="userPhone"
           icon="photograph"
         bind:click-icon="onClickIcon"
+        bind:change="onFindPhone"
+        cursor-spacing="100"
         />
-       
+        <view class='retrieval_panl' wx:if="{{isRetr}}">
+            <view class='retrieval_box shadow-just'>
+                <view class='title_panl'>
+                    <view>以下是检索历史记录结果：</view>
+                    <view bindtap='clerisRetr'>关闭</view>
+                </view>
+                <view class='retrList'>
+                    <view wx:if="{{mobList.length>0}}" wx:key="index" wx:for="{{mobList}}"  data-mob="{{item}}"  bindtap='getMobile'>{{item}}</view>
+                    <view  wx:if="{{mobList.length<1}}">未能找到历史记录</view>
+                </view>
+            </view>
+        
+        </view>
       </van-cell-group>
       <view class='waiter'>
         <view class='c-333 font-w6'>选择快递</view>

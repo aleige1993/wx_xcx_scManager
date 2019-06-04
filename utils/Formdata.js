@@ -24,7 +24,7 @@ let post = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': app.UserLogin.get('userInfo').token || ''
+        'token': app.UserLogin ? app.UserLogin.get('userInfo').token : ''
     },
     success(res) {
       let data = res.data;
@@ -49,7 +49,7 @@ let post = (url, data, callback) => {
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('系统繁忙, 请稍后再试');
+      app.Tools.showToast('网络异常, 请稍后再试');
     }
   });
 }
@@ -66,7 +66,7 @@ let get = (url, data, callback) => {
       'appId': HTTPHEADER_APPID,
       'version': HTTPHEADER_APPVERSION,
       'sign': HTTPHEADER_APPSIGN,
-      'token': app.UserLogin.get('userInfo').token || ''
+        'token': app.UserLogin ? app.UserLogin.get('userInfo').token : ''
     },
     success(res) {
       let data = res.data;
@@ -91,7 +91,7 @@ let get = (url, data, callback) => {
       callback(data);
     },
     fail(e) {
-      app.Tools.showToast('系统繁忙, 请稍后再试');
+      app.Tools.showToast('网络异常, 请稍后再试');
     }
   });
 }

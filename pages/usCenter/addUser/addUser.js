@@ -12,7 +12,8 @@ Page({
       mobile: '',
       userName: '',
       pwd: ''
-    }
+    },
+    type:1,
   },
 
   selectUserIcon() {
@@ -35,7 +36,8 @@ Page({
       let nickName = e.detail.value.nickName;
     let userName = e.detail.value.userName;
     let mobile = e.detail.value.mobile;
-    let pwd = e.detail.value.pwd;
+      let pwd = e.detail.value ? e.detail.value.pwd:'';
+      let url = '';
       if (nickName === '') {
           app.Tools.showToast('员工姓名不能为空');
           return false;
@@ -48,24 +50,34 @@ Page({
       app.Tools.showToast('手机号不能为空');
       return false;
     }
-    if (pwd === '') {
+    if (pwd === '' && this.data.type == 1) {
       app.Tools.showToast('密码不能为空');
       return false;
     }
-
-    this.setData({
-        'userInfo.nickName': nickName,
-      'userInfo.userName': userName,
-      'userInfo.mobile': mobile,
-      'userInfo.pwd': pwd
-    })
+    if(this.data.type == 1){
+        url = '/openapi/express/wechatapplet/express/manager/save';
+        this.setData({
+            'userInfo.nickName': nickName,
+            'userInfo.userName': userName,
+            'userInfo.mobile': mobile,
+            'userInfo.pwd': pwd
+        })
+    }else{
+        url = '/openapi/express/wechatapplet/express/manager/editChild';
+        this.setData({
+            'userInfo.nickName': nickName,
+            'userInfo.userName': userName,
+            'userInfo.mobile': mobile,
+        })
+    }
+   
     let _this = this;
-    app.Formdata.post('/openapi/express/wechatapplet/express/manager/save', {
+      app.Formdata.post(url, {
       ..._this.data.userInfo
     }, function(res) {
       if (res.success && res.success === 'true') {
         wx.showToast({
-            title: '添加成功'
+            title: _this.data.type == 1?'添加成功':'修改成功'
         })
         setTimeout(function() {
             wx.navigateBack({
@@ -80,7 +92,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      if (options.userItem){
+          let userInfo = JSON.parse(options.userItem);
+          console.log(userInfo)
+          this.setData({
+              type:2,
+              'userInfo.nickName': userInfo.nickName,
+              'userInfo.mobile': userInfo.mobile,
+              'userInfo.userName': userInfo.userName,
+              'userInfo.status': userInfo.status,
+              'userInfo.memberNo': userInfo.memberNo
+          })
+          wx.setNavigationBarTitle({
+              title: '修改员工'
+          })
+      }
   },
 
   /**
@@ -94,7 +120,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      if (this.data.type == 1) {
+          wx.setNavigationBarTitle({
+              title: '添加员工'
+          })
+      } else {
+          wx.setNavigationBarTitle({
+              title: '修改员工'
+          })
+      }
   },
 
   /**

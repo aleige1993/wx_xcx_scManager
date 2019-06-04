@@ -35,7 +35,8 @@
 
 
         <view class='marig-primary'>
-            <button class="button" form-type='submit' size="normal">提交</button>
+            <button class="button" bindtap='setLoad'  disabled="{{loading}}"  form-type='submit' size="normal">提交</button>
+             <!-- <button class="button"   wx:if="{{!loading}}" size="normal">提交</button> -->
         </view>
     </form>
 </view>

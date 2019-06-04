@@ -9,7 +9,8 @@ Page({
    */
   data: {
     userinfo: {},
-    showAddUser: false
+    showAddUser: false,
+    qrcode:''
   },
 
   loginout() {
@@ -18,7 +19,8 @@ Page({
       message: '确定要退出当前账号？'
     }).then(() => {
       // on confirm
-      app.UserLogin.remove('userInfo');
+    app.UserLogin.remove('userInfo');
+    app.UserLogin.remove('loginCode');
       wx.redirectTo({
         url: '/pages/login/index'
       })
@@ -26,6 +28,13 @@ Page({
       // on cancel
     });
   },
+  //预览图片
+    previewImage(e){
+        wx.previewImage({
+            current: this.data.qrcode, // 当前显示图片的http链接
+            urls: [this.data.qrcode] // 需要预览的图片http链接列表
+        })
+    },
 //点击上传头像
     selectUserIcon() {
         let _this = this;
@@ -57,11 +66,29 @@ Page({
             },
         })
     },
+    //获取二维码
+    getStationQrcode(){
+        app.Formdata.get('/openapi/express/wechatapplet/express/station/stationQrcode', {}, (res) => {
+            console.log(res)
+            if(res.code == '0000') {
+                this.setData({
+                    qrcode:res.data
+                })
+            }else{
+                wx.showToast({
+                    title: '获取二维码失败',
+                    icon:'none'
+                })
+            }
+        })
+    },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let _this = this;
+      _this.getStationQrcode();
     _this.setData({
       showAddUser: app.UserLogin.get('userInfo').userLevel == '1' ? true : false
     })

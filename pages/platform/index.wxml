@@ -1,17 +1,69 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='library'>
-      <navigator  url="/pages/platform/warehous/index">
-         <icon  class='iconfont icon-rukudengji'></icon>
-         <text>入库</text>
-      </navigator>
-      <navigator url="/pages/platform/outhous/index">
-         <icon  class='iconfont icon-chuku'></icon>
-         <text>出库</text>
-      </navigator>
-  </view>
-  <view class='code_input'>
-      <icon class='iconfont icon-xiazai5'></icon>
-      <input placeholder='手机号后四位/快递单号' disabled='ture' bindtap='goToback' type='text' ></input>
-  </view>
+    <view class='library'>
+        <navigator url="/pages/platform/warehous/index">
+            <icon class='iconfont icon-rukudengji'></icon>
+            <text>入库</text>
+        </navigator>
+        <navigator url="/pages/platform/outhous/index">
+            <icon class='iconfont icon-chuku'></icon>
+            <text>出库</text>
+        </navigator>
+    </view>
+    <view class='code_input'>
+        <icon class='iconfont icon-xiazai5'></icon>
+        <input placeholder='手机号/快递单号' disabled='ture' bindtap='goToback' type='text'></input>
+    </view>
+</view>
+<view class=''>
+    <view class='sitch'>
+        <view class='dispat'>
+            <view class='disone'>
+                <view class='title'>今日预约开始时间</view>
+                <picker mode="time" value="{{createStartTime}}" start="" end="" bindchange="createStartChange">
+                    <view class="picker">
+                        {{createStartTime?createStartTime:'请选择开始时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'>~</view>
+            <view class='disone'>
+                <view class='title'>今日预约结束时间</view>
+                <picker mode="time" value="{{createEndTime}}" start="" end="" bindchange="createEndChange">
+                    <view class="picker">
+                        {{createEndTime?createEndTime:'请选择结束时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'></view>
+            <view class='disinp'>
+                <view class='title'></view>
+                <view class='pickerIpu' bindtap='chengOrder'>
+                    查询
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='order_box'>
+    <view wx:for="{{expressList}}" wx:key="{{index}}" class='new-express-list shadow-just'>
+        <view class="flex">
+            <view>
+                <text>{{item.company}}：</text>{{item.expressNo}}</view>
+            <view>
+                <text>取件码：</text><text class='c-yellow'>{{item.qrcode}}</text></view>
+        </view>
+        <view data-mobile="{{item.mobile}}" bindtap='clickMobile'>
+            <text>联系电话：</text>
+            <text class='c-blue'>{{item.mobile}}</text>
+        </view>
+        <view>
+            <text>入库时间：</text>
+            <text class='c-666'>{{item.inTime}}</text>
+        </view>
+        <view>
+            <text>预约送件时间：</text>
+            <text class='c-blue'>{{item.text}}</text>
+        </view>
+    </view>
 </view>

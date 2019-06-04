@@ -1,4 +1,5 @@
 // pages/platform/warehous/wareResult.js
+let app = getApp();
 Page({
 
   /**
@@ -10,8 +11,14 @@ Page({
       item:''
   },
     goback(e){
-        wx.redirectTo({
-            url:'/pages/platform/warehous/index'
+        wx.navigateBack({
+            delta: 1,
+            success(res){
+                app.globalData.wareShow = true
+            },
+            complete(data){
+                console.log('wareShow2',app.globalData.wareShow)
+            }
         })
     },
   /**

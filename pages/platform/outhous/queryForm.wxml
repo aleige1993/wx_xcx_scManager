@@ -3,7 +3,7 @@
    <view>
       <van-search
         value="{{ mobile }}"
-        placeholder="手机号后四位/快递单号/入库单号"
+        placeholder="手机号/快递单号/入库单号"
         use-action-slot
         field-class="inputClass"
         bind:change="onChange"

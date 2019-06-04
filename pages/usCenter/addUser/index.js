@@ -11,7 +11,31 @@ Page({
   data: {
     userList: []
   },
-
+    switchChange(e){
+        let _this = this;
+        let mobile = e.target.dataset.mobile;
+        let index = e.target.dataset.index;
+        let status = e.target.dataset.status;
+        let memberNo = e.target.dataset.memberno;
+        let nickName = e.target.dataset.nickname;
+        let userName = e.target.dataset.username;
+        app.Formdata.post('/openapi/express/wechatapplet/express/manager/editChild', {
+            mobile,
+            status: status == '1' ? '2' : status == '2'? '1': '2',
+            memberNo,
+            nickName,
+            userName
+        }, function (res) {
+            if (res.code == '0000') {
+                let userList = _this.data.userList;
+                _this.setData({
+                    ['userList[' + index + '].status']: status == '1' ? '2' : status == '2' ? '1' : '2'
+                })
+                console.log(_this.data.userList)
+                app.Tools.showToast('设置成功');
+            }
+        })
+    },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +50,6 @@ Page({
     })
 
   },
-
   removeUser(e) {
     console.log(e);
     let _this = this;
@@ -51,7 +74,14 @@ Page({
       // on cancel
     });
   },
-
+    goEdit(e){
+        console.log(e)
+        let items = e.currentTarget.dataset.items;
+        console.log(items)
+        wx.navigateTo({
+            url: '/pages/usCenter/addUser/addUser?userItem=' + JSON.stringify(items),
+        })
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

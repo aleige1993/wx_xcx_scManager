@@ -13,7 +13,7 @@
   <!--左部线条 -->
   <cover-view class= 'biaochi' style = 'top:{{gap}}px; left:{{gap}}px; width:2px; height:50px;'> </cover-view>
   </camera>
-<view class='c-999 maign10'>{{masg}}</view>
+    <view class='c-999 maign10' >{{masg}}</view>
 
  <view class='marig-primary '>
         <button class="button"  bindtap="takePhoto">拍照</button>

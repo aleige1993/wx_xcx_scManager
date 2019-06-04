@@ -13,21 +13,36 @@ Page({
       cubeArr:[],
       cubeIndex:'',
       cubeName:'',
-      cubeNum:''
+      cubeNum:'',
+      loading:false
   },
+ setLoad(){
+     let _this = this;
+     _this.setData({
+         loading: true
+     })
+ },
 formSubmit(e){
-    if (!this.WxValidate.checkForm(e)) {
-        console.log(e);
-        const error = this.WxValidate.errorList[0];
+    let  _this = this;
+    _this.setData({
+        loading: true
+    })
+    if (!_this.WxValidate.checkForm(e)) {
+        const error = _this.WxValidate.errorList[0];
         wx.showToast({
             title: error.msg,
             icon: 'none',
-            duration: 2000
+            duration: 2000,
+            success(){
+                _this.setData({
+                    loading: false
+                })
+            }
         })
         return false
     }
-    let company = this.data.company;
-    let userInfo = this.data.userInfo;
+    let company = _this.data.company;
+    let userInfo = _this.data.userInfo;
     let message = {
         'mobile': company.mobile,
         'orderNo': company.orderNo,
@@ -35,8 +50,8 @@ formSubmit(e){
         'expressNo': company.expressNo,
         'companyNo': company.companyNo,
         'company': company.company,
-        'cubeName': this.data.cubeName,
-        'cubeNum': this.data.cubeNum
+        'cubeName': _this.data.cubeName,
+        'cubeNum': _this.data.cubeNum
     }
     app.Formdata.post('/openapi/express/wechatapplet/express/order/input', message,function(res){
         if(res.code == '0000'){
@@ -44,6 +59,9 @@ formSubmit(e){
                 url: '/pages/platform/warehous/wareResult?data=' + JSON.stringify(res)
             })
         }
+    })
+    _this.setData({
+        loading: false
     })
  },
     queryCabinet(){

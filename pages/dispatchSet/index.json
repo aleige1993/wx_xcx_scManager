@@ -1,0 +1,14 @@
+{
+    "navigationBarTitleText": "派件设置",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "onReachBottomDistance":50,
+    "usingComponents": {
+        "van-switch-cell": "/ui-plugins/vant/switch-cell/index",
+        "van-search": "/ui-plugins/vant/search/index",
+        "van-tab": "/ui-plugins/vant/tab/index",
+        "van-tabs": "/ui-plugins/vant/tabs/index",
+        "van-button": "/ui-plugins/vant/button/index",
+        "van-dialog": "/ui-plugins/vant/dialog/index"
+    }
+}

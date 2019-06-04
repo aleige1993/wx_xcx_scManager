@@ -1,56 +1,78 @@
 <!--pages/usCenter/index.wxml-->
 <view>
-  <view class='us-img-box'>
-    <view class='box-user'>
-      <image bindtap='selectUserIcon'  src="{{userinfo.avatarUri ? userinfo.avatarUri : '../../static/images/hader.png'}}"></image>
-      <view>
-        <text>{{userinfo.userName}}</text>
-        <text>{{userinfo.mobile}}</text>
-      </view>
-    </view>
-    <!-- <icon  class='iconfont icon-you1'></icon> -->
-  </view>
+    <view class='us-img-box'>
+        <view class='box-user'>
+            <image bindtap='selectUserIcon' src="{{userinfo.avatarUri ? userinfo.avatarUri : '../../static/images/hader.png'}}"></image>
+            <view>
+                <text>{{userinfo.userName}}</text>
+                <text>{{userinfo.mobile}}</text>
+            </view>
 
-  <view>
-    <view class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>今日收件</text>
-      </view>
-      <view>{{userinfo.inPutTodayNum}}</view>
-    </view>
-    <view class='glup_box'>
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>出库剩余</text>
-      </view>
-      <view>{{userinfo.outRemainNum}}</view>
+        </view>
+        <view class='box-img'>
+            <image src="{{qrcode?qrcode:'/static/images/error.png'}}" bindtap='previewImage'></image>
+        </view>
+        <!-- <icon  class='iconfont icon-you1'></icon> -->
     </view>
 
-    <navigator wx:if="{{showAddUser}}" class='glup_box' url="/pages/usCenter/addUser/index">
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>员工管理</text>
-      </view>
-      <view>
-        <icon class='iconfont icon-you1'></icon>
-      </view>
-    </navigator>
-    <navigator class='glup_box' url="/pages/usCenter/setUser/index">
-      <view>
-        <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
-        <text>驿站信息</text>
-      </view>
-      <view>
-        <icon class='iconfont icon-you1'></icon>
-      </view>
-    </navigator>
+    <view>
+        <view class='glup_box'>
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>今日收件</text>
+            </view>
+            <view>{{userinfo.inPutTodayNum}}</view>
+        </view>
+        <view class='glup_box'>
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>出库剩余</text>
+            </view>
+            <view>{{userinfo.outRemainNum}}</view>
+        </view>
 
-  </view>
+        <navigator wx:if="{{showAddUser}}" class='glup_box' url="/pages/usCenter/addUser/index">
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>员工管理</text>
+            </view>
+            <view>
+                <icon class='iconfont icon-you1'></icon>
+            </view>
+        </navigator>
+        <navigator class='glup_box' url="/pages/usCenter/setUser/index">
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>驿站信息</text>
+            </view>
+            <view>
+                <icon class='iconfont icon-you1'></icon>
+            </view>
+        </navigator>
 
-  <view class='marig-primary'>
-    <button bindtap='loginout' class='button' size="normal" type="primary" custom-class="primary">退出账号</button>
-  </view>
+        <navigator  wx:if="{{showAddUser}}" class='glup_box' url="/pages/usCenter/addShelf/index">
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>衣物搁架设置</text>
+            </view>
+            <view>
+                <icon class='iconfont icon-you1'></icon>
+            </view>
+        </navigator>
+         <navigator  wx:if="{{showAddUser}}" class='glup_box' url="/pages/dispatchSet/index">
+            <view>
+                <!-- <icon class='iconfont icon-ico_meiyoushuju'></icon> -->
+                <text>预约派件时间设置</text>
+            </view>
+            <view>
+                <icon class='iconfont icon-you1'></icon>
+            </view>
+        </navigator>
+    </view>
+
+    <view class='marig-primary'>
+        <button bindtap='loginout' class='button' size="normal" type="primary" custom-class="primary">退出账号</button>
+    </view>
 
 </view>
 

@@ -1,0 +1,70 @@
+<!--pages/dispatchSet/index.wxml-->
+<view class='laundryOrder'>
+    <view class='switchView'>
+        <view class='c-666 switcFont'>预约派件服务开关</view>
+        <switch checked="{{isChecked}}" color="#3984ff" bindchange="switchChange" />
+    </view>
+    <view class='sitch'>
+        <view class='dispat'>
+            <view class='disone'>
+                <view class='title'>开始时间</view>
+                <picker mode="time" value="{{createStartTime}}" start="" end="" bindchange="createStartChange">
+                    <view class="picker">
+                        {{createStartTime?createStartTime:'请选择开始时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'>~</view>
+            <view class='disone'>
+                <view class='title'>结束时间</view>
+                <picker mode="time" value="{{createEndTime}}" start="" end="" bindchange="createEndChange">
+                    <view class="picker">
+                        {{createEndTime?createEndTime:'请选择结束时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'></view>
+            <view class='disinp'>
+                <view class='title'>配送数量</view>
+                <view class='pickerIpu'>
+                    <input value='{{createNum}}' bindinput="inputChange" placeholder="配送数量" type="number" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <button class="button"  size="normal" bindtap='buttAllUp'>新增预约配置</button>
+
+     <view class='sitch' wx:for="{{timeList}}" wx:key="timeList">
+        <view class='dispat'>
+            <view class='disone'>
+                <view class='title'>开始时间</view>
+                <picker mode="time" value="{{item.beginTime}}" start="" end="" data-index="{{index}}" bindchange="newStartTimeChange">
+                    <view class="picker">
+                        {{item.beginTime ? item.beginTime:'请选择开始时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'>~</view>
+            <view class='disone'>
+                <view class='title'>结束时间</view>
+                <picker mode="time" value="{{item.endTime}}" start="" end="" data-index="{{index}}"  bindchange="newEndTimeChange">
+                    <view class="picker">
+                        {{item.endTime?item.endTime:'请选择结束时间' }}
+                    </view>
+                </picker>
+            </view>
+            <view class='text'></view>
+            <view class='disinp'>
+                <view class='title'>配送数量</view>
+                <view class='pickerIpu'>
+                    <input placeholder="配送数量"  data-index="{{index}}"  value='{{item.maxNum}}' type="number" bindinput="newMaxNum" />
+                </view>
+            </view>
+        </view>
+        <view class='buttom_view'>
+            <view class='c-666'  data-index="{{index}}"   data-items="{{item}}" bindtap='delTime'>删除</view>
+            <view class='c-blue'  data-items="{{item}}" bindtap='editTime'>保存</view>
+        </view>
+    </view>
+
+</view>

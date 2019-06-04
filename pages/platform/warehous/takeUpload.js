@@ -1,6 +1,6 @@
 // pages/platform/warehous/takeUpload.js
-let FormdataConfig = require('../../../config/index.js');
-let HTTPOPENAPIURL = FormdataConfig.HTTPOPENAPIURL;
+// let FormdataConfig = require('../../../config/index.js');
+// let HTTPOPENAPIURL = FormdataConfig.HTTPOPENAPIURL;
 let app = getApp();
 Page({
 
@@ -32,6 +32,7 @@ Page({
         app.globalData.codePhone = this.data.phone
     },
     onLoad: function(options) {
+        console.log("HTTPOPENAPIURL", app.Config.HTTPOPENAPIURL)
         wx.showLoading({
             title: '数据处理中...',
             mask: true
@@ -74,9 +75,9 @@ Page({
                                             that.canvas.drawImage(that.filePath, that.data.gap, that.data.gap, that.data.width - that.data.gap * 2, 70)
                                             that.canvas.draw()
                                         })
-                                        console.log("HTTPOPENAPIURL", HTTPOPENAPIURL)
+                                        console.log("HTTPOPENAPIURL", app.Config.HTTPOPENAPIURL)
                                         wx.uploadFile({
-                                            url: HTTPOPENAPIURL + '/openapi/common/file/ocr',
+                                            url: app.Config.HTTPOPENAPIURL + '/openapi/common/file/ocr',
                                             filePath: that.filePath,
                                             header: {
                                                 'appId': '100006',

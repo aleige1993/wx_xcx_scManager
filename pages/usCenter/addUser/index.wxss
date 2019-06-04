@@ -18,6 +18,7 @@ page{
 }
 .add_user_box .us_view{
   display: flex;
+  flex: 1;
 }
 .add_user_box .us_details{
   display:flex;

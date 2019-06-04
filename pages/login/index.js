@@ -9,10 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    submitLoading: false
+    submitLoading: false,
+      account:'',
+      password:''
   },
 
   submitForm(e) {
+    let _this = this;
     let account = e.detail.value.account;
     let password = e.detail.value.password;
     if (account === '') {
@@ -23,7 +26,6 @@ Page({
       app.Tools.showToast('请输入密码');
       return false;
     }
-    let _this = this;
     _this.setData({
       submitLoading: true
     })
@@ -37,19 +39,25 @@ Page({
       })
       if (res.success && res.success === 'true') {
         app.UserLogin.set('userInfo', res.data);
+        app.UserLogin.set('loginCode', { 'account': account, 'password': password});
         wx.switchTab({
           url: '/pages/laundryOrder/index',
         });
-        // wx.navigateBack();
       }
     });
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let _this = this;
+      if (app.globalData.employId && app.globalData.employId != '') {
+      } else {
+          app.employIdCallback = employId => {
+              if (employId != '') {
+              }
+          }
+      } 
   },
 
   /**
@@ -63,6 +71,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      if (app.UserLogin.get('loginCode')){
+          this.setData({
+              account: app.UserLogin.get('loginCode').account,
+              password: app.UserLogin.get('loginCode').password
+      })
+      }
 
   },
 

@@ -11,7 +11,9 @@ Page({
       shopIndex:'',
       shopArr:'',
       allData:'',
-      companyData:''
+      companyData:'',
+      isRetr:false,
+      mobList:''
   },
     onClickIcon(e){
         wx.navigateTo({
@@ -19,23 +21,62 @@ Page({
         })
     },
   getCode(){
-    let  _this = this;
+      let  _this = this;
     wx.scanCode({
       scanType: ['barCode', 'qrCode'],
       success(res) {
         _this.setData({
           code:res.result
         })
-      }
+      },
+        complete(data){
+            console.log('complete', data)
+        }
     })
   },
-    formSubmit(e){
+  //获取检索结果
+    getMobile(e){
+        let mobile = e.target.dataset.mob;
+        let _this = this;
+        _this.setData({
+            userPhone:mobile,
+        },(res)=>{
+            _this.clerisRetr();
+        })
+
+    },
+  //关闭检索
+    clerisRetr(){
         this.setData({
+            isRetr: false
+        })
+    },
+    onFindPhone(e){
+        let text = e.detail;
+        if (text.length >= 3){
+            app.Formdata.get('/openapi/express/wechatapplet/express/order/queryForMobiles', { mobile: text },(res)=>{
+                if(res.code == "0000"){
+                    this.setData({
+                        mobList:res.data,
+                        isRetr: true
+                    })
+                }
+            })
+        }else{
+            this.setData({
+                isRetr:false
+            })
+        }
+    },
+    formSubmit(e){
+        console.log('formSubmit',e);
+        let  _this = this;
+        _this.setData({
             code: e.detail.value.code,
             userPhone: e.detail.value.userPhone
         })
         // !(/^[0-9a-zA-Z]+$/.test(e.detail.value.code))
-        if (e.detail.value.code == ''){
+        if (!(e.detail.value.code.length>9)){
             app.Tools.showToast('非正常快递单号');
             return false;
         } else if (!(/^1\d{10}$/.test(e.detail.value.userPhone))){
@@ -46,16 +87,40 @@ Page({
             return false;
         }
          let company ={
-             'companyNo': this.data.companyData.companyNo,
-             'company': this.data.companyData.companyName,
-             'expressNo': this.data.code,
-             'mobile': this.data.userPhone
+             'companyNo': _this.data.companyData.companyNo,
+             'company': _this.data.companyData.companyName,
+             'expressNo': _this.data.code,
+             'mobile': _this.data.userPhone
          }
+         console.log(1)
         app.Formdata.post('/openapi/express/wechatapplet/express/order/add', company,function(res){
+            console.log(2)
             if(res.code== "0000"){
-                wx.navigateTo({
-                    url: '/pages/platform/warehous/getInfo?data=' + JSON.stringify(res.data)
-                })
+                console.log(3)
+                if (res.data.inTime){
+                    wx.showModal({
+                        title: '温馨提示',
+                        content: '此快递单号已经入库，是否继续操作',
+                        cancelText:'我知道了',
+                        confirmText:'继续入库',
+                        success(mode) {
+                            if (mode.confirm) {
+                                  wx.navigateTo({
+                                    url: '/pages/platform/warehous/getInfo?data=' + JSON.stringify(res.data)
+                                })
+                            } else if (mode.cancel) {
+                               _this.setData({
+                                   code: '',
+                                   userPhone: '',
+                               })
+                            }
+                        }
+                    })
+                }else{
+                    wx.navigateTo({
+                        url: '/pages/platform/warehous/getInfo?data=' + JSON.stringify(res.data)
+                    })
+                }
             }
         })
     },
@@ -96,11 +161,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      let _this = this;
       if (app.globalData.codePhone) {
-          this.setData({
+          _this.setData({
               userPhone: app.globalData.codePhone
           })
       }
+      console.log('wareShow',app.globalData.wareShow)
+      setTimeout(()=>{
+          if (app.globalData.wareShow) {
+              _this.setData({
+                  code: '',
+                  userPhone: '',
+              }, (res) => {
+                  app.globalData.wareShow = false
+              })
+          }
+      },500)
   },
 
   /**
