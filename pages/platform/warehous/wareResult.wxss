@@ -12,11 +12,17 @@ page{
 }
 .suc_panl icon{
   font-size: 100px;
-  color: #3984ff;
+}
+.fontc1{
+ color: rgb(225, 102, 0);
+}
+.fontc2{
+      color: #3984ff;
 }
 .suc_panl .suc_title{
   font-size:20px;
   font-weight: 700;
+  color: #414141;
 }
 .suc_panl .suc_code{
   color: #ff0000;
@@ -43,4 +49,22 @@ page{
 }
 .error_panl view{
   margin-top: 20rpx;
+}
+.suc_user_vip{
+   font-size:24px;
+    font-weight:700;
+   color: rgb(225, 102, 0);
+}
+.suc_ipone_vip{
+    font-size:18px;
+     font-weight:700;
+   color: rgb(225, 102, 0);
+}
+.suc_user{
+    font-size: 20px;
+    font-weight: 600;
+}
+.suc_ipone{
+    font-size:16px;
+     font-weight:600;   
 }

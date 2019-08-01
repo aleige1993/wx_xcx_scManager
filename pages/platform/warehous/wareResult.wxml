@@ -2,8 +2,19 @@
 <view>
   <view class='success' wx:if="{{isShow}}">
       <view class='suc_panl'>
-        <icon class='iconfont icon-chenggong'></icon>
+        <icon class='iconfont icon-chenggong {{item.memberNo?"fontc1":"fontc2"}}'></icon>
         <view class='suc_title'>入库成功</view>
+            <view class='suc_sucer' wx:if="{{item.memberNo}}">
+                <view class='suc_user_vip'>付费会员</view>
+                <view class='suc_ipone_vip'>{{item.mobile}}</view>
+            </view>
+            <view class='suc_err' wx:if="{{!item.memberNo}}">
+                <view class='suc_user'>普通用户</view>
+                <view class='suc_ipone'>{{item.mobile}}</view>
+            </view>
+        <view>
+        
+        </view> 
         <view class='suc_code'>取件验证码:{{item.qrcode}}</view>
         <view class='suc_lable'>已发送短信模板</view>
       </view>

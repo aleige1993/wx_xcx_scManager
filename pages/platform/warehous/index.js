@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      isSheet:false,
      code:'',
       userPhone:'',
       shopIndex:'',
@@ -13,11 +14,75 @@ Page({
       allData:'',
       companyData:'',
       isRetr:false,
-      mobList:''
+      mobList:'',
+      actions:[]
   },
+    onSelect(e) {
+        console.log(e.detail);
+        let _this = this;
+        let exp = e.detail;
+        let index = '';
+        _this.data.allData.map((item,i)=>{
+            if (item.companyNo == exp.companyNo){
+                index = i
+            }
+        })
+        console.log(index);
+        _this.setData({
+            isSheet:false,
+            shopIndex:index,
+            companyData: _this.data.allData[index]
+        })
+    },
+    onCloseSheet() {
+      this.setData({
+          isSheet:false
+      })
+    },
     onClickIcon(e){
         wx.navigateTo({
             url: '/pages/platform/warehous/takePhoto'
+        })
+    },
+    getQueryCompany(expressNo){
+        let _this = this;
+        app.Formdata.get('/openapi/express/wechatapplet/express/order/queryCompany', { expressNo: expressNo},(res)=>{
+            if(res.code == '0000') {
+                console.log(res);
+                 let explist = res.data;
+                 let  index = '';
+                if (explist.length == 1){  
+                    _this.data.allData.map((item,i)=>{ 
+                        if (explist[0].companyNo == item.companyNo){
+                            index = i; 
+                        }
+                    })  
+                    _this.setData({
+                        companyData: explist[0],
+                        shopIndex:index
+                    })
+                } else if (explist.length > 1){
+                    let newExplist = explist.map(item => {
+                        return {
+                            name: item.companyName,
+                            companyNo: item.companyNo
+                        }
+                     })
+                    _this.setData({
+                        actions: newExplist,
+                        isSheet:true
+                    })
+                 }
+            }
+        })
+    },
+    confirmCode(e){
+        console.log(e)
+        let _this = this;
+        _this.setData({
+            code: e.detail
+        }, () => {
+            _this.getQueryCompany(e.detail);
         })
     },
   getCode(){
@@ -27,6 +92,8 @@ Page({
       success(res) {
         _this.setData({
           code:res.result
+        },()=>{
+            _this.getQueryCompany(res.result);
         })
       },
         complete(data){
@@ -68,8 +135,7 @@ Page({
             })
         }
     },
-    formSubmit(e){
-        console.log('formSubmit',e);
+    formSubmit(e){ 
         let  _this = this;
         _this.setData({
             code: e.detail.value.code,
@@ -82,7 +148,7 @@ Page({
         } else if (!(/^1\d{10}$/.test(e.detail.value.userPhone))){
             app.Tools.showToast('非正常手机号');
             return false;
-        } else if (this.data.companyData.companyNo==""){
+        } else if (_this.data.companyData.companyNo==""){
             app.Tools.showToast('请选择快递');
             return false;
         }
@@ -126,8 +192,8 @@ Page({
     },
     shoprChange(e){
         this.setData({
-            shopIndex: e.detail.value,
-            companyData: this.data.allData[e.detail.value]
+            companyData: this.data.allData[e.detail.value],
+            shopIndex: e.detail.value
         })
     },
 
@@ -139,12 +205,7 @@ Page({
       let  _this = this;
       app.Formdata.get('/openapi/express/wechatapplet/express/company/query', {},function(res){
           if (res.code=="0000"){
-              let datas=[];
-              res.data.map((item,index)=>{
-                  datas.push(item.companyName)
-              });
               _this.setData({
-                  shopArr: datas,
                   allData: res.data
               })
           }

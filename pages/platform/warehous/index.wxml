@@ -9,6 +9,7 @@
           clearable
           placeholder="请输入快递单号"
            name="code"
+           bind:confirm="confirmCode"
         />
         <van-field
           value="{{ userPhone }}"
@@ -35,11 +36,11 @@
         </view>
       </van-cell-group>
       <view class='waiter'>
-        <view class='c-333 font-w6'>选择快递</view>
+        <view class='c-666 font-w6'>选择快递</view>
         <view>
-            <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{shopArr}}">
+            <picker bindchange="shoprChange" value="{{shopIndex}}" range="{{allData}}" range-key="companyName">
                 <view class="picker">
-                    {{shopArr[shopIndex] ? shopArr[shopIndex] : '请选择快递'}}
+                    {{allData[shopIndex].companyName ? allData[shopIndex].companyName : '请选择快递'}}
                     <icon class='iconfont icon-you1'></icon>
                 </view>
             </picker>
@@ -57,3 +58,13 @@
         <navigator class='c-blue'  url="/pages/msgeModel/index">去选择短信模板</navigator>
     </view> -->
 </view>
+
+<van-action-sheet
+  show="{{ isSheet }}"
+  actions="{{ actions }}"
+  cancel-text="取消"
+  title="识别结果对应多个快递公司，请选择"
+  bind:cancel="onCloseSheet" 
+  bind:select="onSelect"
+  bind:close="onCloseSheet"
+/>

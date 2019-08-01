@@ -4,6 +4,7 @@
       "van-icon": "/ui-plugins/vant/icon/index",
     "van-field": "/ui-plugins/vant/field/index",
     "van-cell-group": "/ui-plugins/vant/cell-group/index",
-    "van-button": "/ui-plugins/vant/button/index"
+    "van-button": "/ui-plugins/vant/button/index",
+    "van-action-sheet": "/ui-plugins/vant/action-sheet/index"
   }
 }

@@ -7,7 +7,7 @@ App({
           method: 'GET',
           url: 'https://openapi.songchewang.com/openapi/common/versions/version/host',
           data: {
-              'message': JSON.stringify({ "versionNo": 100 })
+              'message': JSON.stringify({ "versionNo": 202 })
           },
           header: {
               'appId': '100006',
